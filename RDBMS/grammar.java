@@ -7,7 +7,8 @@ rel_ii_1000
 
 
 public class Parser{
-
+	
+//could maybe use mysqlparse?	
 
 		//parse through the query token by token 
 			//code to read through each entry and store it (could be done with the grammar)
