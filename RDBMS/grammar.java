@@ -18,15 +18,18 @@ public class Parser{
 	}*/	
 	
 	
-	/*pubic void reservedWords {
-	****could also just do switch cases***** switch (input)
+	pubic void reservedWords {
+		if (input.equals('SELECT'){
+			System.out.println("IT WAS SELECT"); 
+		}
+	/****could also just do switch cases***** switch (input)
 		if (the token you get is SELECT)
 		if (the token you get it FROM)
 		if (the token you get is WHERE)
 		if (the token you get is AND)
-		if (the token is invalid)
+		if (the token is invalid)*/
 	
-	}*/
+	}
 	/*pubic void nonreservedWords {
 	****could also just do switch cases***** switch (input)
 		if (the token you get is SUM)
