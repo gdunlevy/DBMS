@@ -7,9 +7,55 @@ rel_ii_1000
 
 
 public class Parser{
+	public Parser (String input){
+		//called in main to get the query to parse
+	}	
 	
-//could maybe use mysqlparse?	
-
+	/*public string parseToken{
+		//get token by token
+	}*/	
+	
+	
+	/*pubic void reservedWords {
+	****could also just do switch cases***** switch (input)
+		if (the token you get is SELECT)
+		if (the token you get it FROM)
+		if (the token you get is WHERE)
+		if (the token you get is AND)
+		if (the token is invalid)
+	
+	}*/
+	/*pubic void nonreservedWords {
+	****could also just do switch cases***** switch (input)
+		if (the token you get is SUM)
+		if (the token you get it MIN)
+		if (the token you get is MAX)
+		if (the token you get is AVG)
+		if (the token you get is INDEX)
+		if (the token is invalid)
+	
+	}*/
+	/*pubic void symbols {
+	****could also just do switch cases***** switch (input)
+		if (the token you get is ,)
+		if (the token you get it ( )
+		if (the token you get is ) )
+		if (the token you get is = )
+		if (the token you get is != )
+		if (the token you get is < )
+		if (the token you get it <= )
+		if (the token you get is > )
+		if (the token you get is >= )
+		if (the token you get is * )
+		if (the token you get is / )
+		if (the token you get it + )
+		if (the token you get is - )
+		if (the token you get is ; )
+		if (the token is invalid)
+	}*/
+	
+	
+	
 		//parse through the query token by token 
 			//code to read through each entry and store it (could be done with the grammar)
 		//storing the tokens and print them out (if we want)
@@ -43,11 +89,11 @@ public class Grammar{
 
 	
 	nextToken(){
-	if it the token is a KEYWORD (ex SELECT)
+	if it the token is a mysql word (ex SELECT)
 	 	switch cases
 		return token
-
-	 	else the token is a name (ie table or colum name)
+		
+	else if the token is just a word (maybe a column name or table name) ---->might be too vague 
 		return token
 
 	else if the token is an operator or a symbol or a space (ex >=)
