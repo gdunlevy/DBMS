@@ -32,6 +32,7 @@ public class Parser{
 		if (the token you get is MAX)
 		if (the token you get is AVG)
 		if (the token you get is INDEX)
+		if (the token you get is any kind of JOIN)
 		if (the token is invalid)
 	
 	}*/
