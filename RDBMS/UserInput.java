@@ -7,7 +7,7 @@ public class UserInput {
         // testing the parser
       
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter query")
+        System.out.println("Enter query: ");
         String queryInput = myObj.nextLine();
         
           
