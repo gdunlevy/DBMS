@@ -12,7 +12,6 @@ public class UserInput {
         
           
         Parser parser = new Parser(queryInput);
-        parser.run();
         
     }
 }
