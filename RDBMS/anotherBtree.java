@@ -381,7 +381,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BTree t = new BTree(4); // A B-Tree with minium degree 4
+        BTree t = new BTree(2); // A B-Tree with minium degree 2
         for (int i=1; i <= 10; i++)
         {
             t.insert(i);
