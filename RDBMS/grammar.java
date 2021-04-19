@@ -15,7 +15,8 @@ public class Parser{
 	
 	/*public string parseToken{
 		//get token by token
-	}*/	
+	}*/
+	public void run(){ reservedWords(); }
 	
 	
 	pubic void reservedWords {
