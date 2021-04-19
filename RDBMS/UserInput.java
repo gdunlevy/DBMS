@@ -18,3 +18,21 @@ public class UserInput {
         
     }
 }
+
+/*
+Scanner myObj = new Scanner(System.in);
+      System.out.print("enter stomething: ");
+      List<String> terms = new ArrayList<String>();
+      String s = ""; 
+
+      while(!s.equals("$") && myObj.hasNext()){
+      //while (myObj.hasNext()) {
+            s = myObj.next();
+            System.out.print(" "+s);
+	         terms.add(s);	    
+   
+      }
+      System.out.println();
+      System.out.println(terms);
+      myObj.close();
+*/
