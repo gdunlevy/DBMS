@@ -16,13 +16,17 @@ public class Parser{
 	/*public string parseToken{
 		//get token by token
 	}*/
-	public void run(){ reservedWords(); }
 	
 	
-	pubic void reservedWords {
-		if (input.equals('SELECT'){
-			System.out.println("IT WAS SELECT"); 
+	public void reservedWords (String input) {
+		//System.out.println("Input: " + input);
+		if (input.equals("SELECT")){
+			System.out.println("SELECT used"); 
 		}
+		else if (input.equals("FROM")){
+			System.out.println("FROM used"); 
+		} 
+	
 	/****could also just do switch cases***** switch (input)
 		if (the token you get is SELECT)
 		if (the token you get it FROM)
@@ -60,7 +64,6 @@ public class Parser{
 		if (the token you get is ; )
 		if (the token is invalid)
 	}*/
-	
 	
 	
 		//parse through the query token by token 
