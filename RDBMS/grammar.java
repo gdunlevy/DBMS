@@ -7,7 +7,9 @@ rel_ii_1000
 
 
 public class Parser{
+	String input; 
 	public Parser (String input){
+		input = input; 
 		//called in main to get the query to parse
 	}	
 	
