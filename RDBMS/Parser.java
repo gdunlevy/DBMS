@@ -12,9 +12,21 @@ public class Parser{
 		//called in main to get the query to parse
 	}	
 	
-	/*public string parseToken{
-		//get token by token
-	}*/
+	public void parseToken(List<String> terms){
+		
+		System.out.println(terms);
+		for (int i=0; i < terms.size(); i++){ //get token by token
+			
+			if (terms.get(i).equals("SELECT")|| terms.get(i).equals("FROM")  || terms.get(i).equals("WHERE") ||terms.get(i).equals("AND") ){
+				reservedWords(terms.get(i));
+			}
+			else if(terms.get(i-1).equals("SELECT")){
+				//colum name
+				System.out.println(terms.get(i));
+			}
+		}
+	
+	}
 	
 	
 	public void reservedWords (String input) {
