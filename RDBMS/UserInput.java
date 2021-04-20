@@ -5,8 +5,8 @@ public class UserInput {
     // Test for output
     public static void main(String args[]) {
 
-		Scanner myObj = new Scanner(System.in);
-      	System.out.print("enter query: ");
+	Scanner myObj = new Scanner(System.in);
+      	System.out.print("Enter Query: ");
       	List<String> terms = new ArrayList<String>();
       	String s = ""; 
 
