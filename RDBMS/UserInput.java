@@ -7,7 +7,7 @@ public class UserInput {
 
 	Scanner myObj = new Scanner(System.in);
       	System.out.print("Enter Query: ");
-      	List<String> terms = new ArrayList<String>();
+      	List<String> terms = new ArrayList<String>(); //probably not the most efficiant way 
       	String s = ""; 
 
 
