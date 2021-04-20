@@ -22,17 +22,23 @@ public class Parser{
 		if (input.equals("SELECT")){
 			System.out.println("SELECT used"); 
 			//next will either be a column name(s) or a * 
-      //call a method that holds the column name/ comma/ *
+			//need a method that gets the next input 
+     			 //call a method that holds the column name/ comma/ *
 		}
 		else if (input.equals("FROM")){
 			System.out.println("FROM used"); 
 			//next will be a table name 
-      //call a method that has table names?
+			//need a method that gets the next input 
+     			 //call a method that has table names?
 		} 
 		else if (input.equals("WHERE")){
 			System.out.println("WHERE used"); 
 			//next will be a condition 
+			//need a method that gets the next input 
 			//call a method for condition?
+		} 
+		else if (input.equals("AND")){
+			System.out.println("AND used"); 
 		} 
 	
 	/****could also just do switch cases***** switch (input)
@@ -43,6 +49,11 @@ public class Parser{
 		if (the token is invalid)*/
 	
 	}
+	
+	public void columnName(String column){
+		
+	}
+	
 	/*pubic void nonreservedWords {
 	****could also just do switch cases***** switch (input)
 		if (the token you get is SUM)
