@@ -35,23 +35,25 @@ public class Parser{
 			System.out.println("SELECT used"); 
 			//next will either be a column name(s) or a * 
 			//need a method that gets the next input 
-     			 //call a method that holds the column name/ comma/ *
+     			//call a method that holds the column name or a mehtod for * --> would this method be connected to the B-tree for the column name?
 		}
 		else if (input.equals("FROM")){
 			System.out.println("FROM used"); 
 			//next will be a table name 
 			//need a method that gets the next input 
-     			 //call a method that has table names?
+     			 //call a method that has table names? --> would this method be connected to the B-tree for the table name?
 		} 
 		else if (input.equals("WHERE")){
 			System.out.println("WHERE used"); 
 			//next will be a condition 
 			//need a method that gets the next input 
-			//call a method for condition?
+			//call a method for condition? --> with all the math stuff?
 		} 
 		else if (input.equals("AND")){
 			System.out.println("AND used"); 
 		} 
+		//else if a comma?
+		//else invaild?
 	
 	/****could also just do switch cases***** switch (input)
 		if (the token you get is SELECT)
