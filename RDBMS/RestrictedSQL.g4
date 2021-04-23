@@ -4,11 +4,15 @@ statement : query
     | tableCommand;
 
 query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition ('AND' condition)*
-       | 'SELECT' colSel (',' colSel)* 'FROM' tableSelect
-       | 'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition ('AND' condition)*
-       | 'INSERT' 'INTO' tableSelect 'VALUES' '('ID (',' ID)* ')';
+       |'SELECT' colSel (',' colSel)* 'FROM' tableSelect
+       |'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition ('AND' condition)*
+       |'INSERT' 'INTO' tableSelect 'VALUES' '('ID (',' ID)* ')'
+       |'DROP' 'TABLE' tableSelect;
+       //| 'CREATE' 'INDEX' indexSel 'ON' tableSelect '(' (',' colSel)* ')'
+       //| 'DROP' 'INDEX' indexSel 'ON' tableSelect;
        
-  
+//indexSel: ID;  
+
 colSel: colSel colSel
     |'*'
     | ID;
@@ -38,16 +42,20 @@ ADD: 'ADD';
 INDEX: 'INDEX'; 
 CREATE: 'CREATE';
 DROP: 'DROP';
+TABLE: 'TABLE';
 UPDATE: 'UPDATE';
 INSERT: 'INSERT';
 BETWEEN: 'BETWEEN';
 INTO: 'INTO';
+ON: 'ON';
 VALUES: 'VALUES'; 
 
 MAX: 'MAX';
 MIN: 'MIN';
 SUM: 'SUM';
 AVG: 'AVG';
+NULL: 'NULL';
+NOT_NULL: 'NOT NULL';
 PLUS: '+';
 MINUS: '-';
 EQUAL:  '=';
@@ -66,6 +74,9 @@ EXCLAMATION: '!';
 INT: 'INT';
 FLOAT: 'FLOAT';
 VARCHAR: 'VARCHAR';
+PRIMARY_KEY: 'PRIMARY KEY';
+FORGIEN_KEY: 'FORGIEN KEY';
 
 WS        : [ \t\n\r]+ -> skip;
 ID : [a-zA-Z0-9]+ ;
+
