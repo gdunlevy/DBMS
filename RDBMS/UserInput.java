@@ -11,8 +11,8 @@ public class UserInput {
       	String s = ""; 
 
 
-      	//for now it goes out of the while loop when you have a $ at the end .... not sure if there is a better way to make it break....
-      	while(!s.equals("$") && myObj.hasNext()){
+      	//for now it goes out of the while loop when you have a ; at the end .... not sure if there is a better way to make it break....
+      	while(!s.equals(";") && myObj.hasNext()){
            	s = myObj.next();
            	//System.out.print(" "+s);
 	        terms.add(s);	    
