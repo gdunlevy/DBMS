@@ -7,6 +7,8 @@ query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition ('AND' condition)*
        |'SELECT' colSel (',' colSel)* 'FROM' tableSelect
        |'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition ('AND' condition)*
        |'INSERT' 'INTO' tableSelect 'VALUES' '('ID (',' ID)* ')'
+       |'DELETE' 'FROM' tableSelect
+       |'DELETE' 'FROM' tableSelect 'WHERE'condition ('AND' condition)*
        |'CREATE' 'TABLE' tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* key')'';'
        |'DROP' 'TABLE' tableSelect
        |'CREATE' 'INDEX' indexSel 'ON' tableSelect '('colSel (',' colSel)* ')'
@@ -34,11 +36,11 @@ tableCommand: 'ADD' tableSelect
 tableSelect: ID;
 
 condition: condition condition
-    | ID '=' colSel
-    | ID '>' colSel
-    | ID '>=' colSel
-    | ID '<' colSel
-    | ID '<=' colSel
+    | colSel '=' ID
+    | colSel '>' ID
+    | colSel '>=' ID
+    | colSel '<' ID
+    | colSel '<=' ID
     | ID;
 
     
@@ -53,6 +55,7 @@ ADD: 'ADD';
 CREATE: 'CREATE';
 INDEX: 'INDEX'; 
 DROP: 'DROP';
+DELETE: 'DELETE';
 TABLE: 'TABLE';
 UPDATE: 'UPDATE';
 INSERT: 'INSERT';
@@ -90,5 +93,3 @@ FORGIEN_KEY: 'FORGIEN KEY';
 
 WS        : [ \t\n\r]+ -> skip;
 ID : [a-zA-Z0-9]+ ;
-
-
