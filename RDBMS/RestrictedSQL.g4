@@ -3,17 +3,16 @@ grammar RestrictedSQL;
 statement : query
     | tableCommand;
 
-query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition
-       | 'SELECT' colSel 'FROM' tableSelect
-       | 'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition
-       | 'INSERT' 'INTO' tableSelect 'VALUES' '(' ID ')';
+query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition ('AND' condition)*
+       | 'SELECT' colSel (',' colSel)* 'FROM' tableSelect
+       | 'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition ('AND' condition)*
+       | 'INSERT' 'INTO' tableSelect 'VALUES' '('ID (',' ID)* ')';
        
-       
+  
 colSel: colSel colSel
     |'*'
-    | ID
-    | ID ',' ID;
-
+    | ID;
+    
 tableCommand: 'ADD' tableSelect
             | 'DROP' tableCommand;
 
@@ -25,7 +24,7 @@ condition: condition condition
     | ID '>=' colSel
     | ID '<' colSel
     | ID '<=' colSel
-    | ID 'AND' ID;
+    | ID;
 
     
 
