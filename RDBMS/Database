@@ -1,0 +1,29 @@
+class Database
+{
+    private ArrayLists<Table> tables = new ArrayList();
+
+    /**
+     *  hold the tables.
+     *
+     *  parsed statements interact with this classes public methods.
+     */
+    public Database(){    }
+
+    private int findTable(String name){
+        return 0;
+    }
+    //TODO: add rest of table arguements. make work
+    public void createTable(String name, List<String> columnNames){}
+
+    //delete table from tables
+    public void dropTable(String name){
+
+    }
+
+    public List<> select(){}
+
+    public void createIndex(){    }
+
+    public void dropIndex(){}
+
+}
