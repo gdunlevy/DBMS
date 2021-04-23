@@ -17,6 +17,12 @@ tableSelect: ID;
 
 condition: condition condition
     | ID '=' colSel;
+    | ID '+' ID;
+    | ID '-' ID;
+    | ID '>' ID;
+    | ID '>=' ID;
+    | ID '<' ID;
+    | ID '<=' ID;
 
 
 ID : [a-zA-Z0-9]+ ;
