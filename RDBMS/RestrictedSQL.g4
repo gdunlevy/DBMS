@@ -5,6 +5,7 @@ statement : query
 
 query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition
        | 'SELECT' colSel 'FROM' tableSelect;
+       | 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition 'AND' condition;
 
 colSel: colSel colSel
     |'*'
