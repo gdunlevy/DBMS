@@ -7,16 +7,27 @@ query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition ('AND' condition)*
        |'SELECT' colSel (',' colSel)* 'FROM' tableSelect
        |'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition ('AND' condition)*
        |'INSERT' 'INTO' tableSelect 'VALUES' '('ID (',' ID)* ')'
-       |'DROP' 'TABLE' tableSelect;
-       //| 'CREATE' 'INDEX' indexSel 'ON' tableSelect '(' (',' colSel)* ')'
-       //| 'DROP' 'INDEX' indexSel 'ON' tableSelect;
+       |'CREATE' 'TABLE' tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* key')'';'
+       |'DROP' 'TABLE' tableSelect
+       |'CREATE' 'INDEX' indexSel 'ON' tableSelect '('colSel (',' colSel)* ')'
+       |'DROP' 'INDEX' indexSel 'ON' tableSelect;
        
-//indexSel: ID;  
+indexSel: ID;  
 
 colSel: colSel colSel
     |'*'
     | ID;
-    
+
+colAtt:
+	|'VARCHAR' '('ID')'
+	|'INT'
+	|'FLOAT'
+	|'NULL'
+	|'NOT NULL';
+
+key:
+	| 'PRIMARY KEY' '(' colSel')';
+
 tableCommand: 'ADD' tableSelect
             | 'DROP' tableCommand;
 
@@ -39,8 +50,8 @@ WHERE: 'WHERE';
 AND: 'AND';
 OR: 'OR';
 ADD: 'ADD';
-INDEX: 'INDEX'; 
 CREATE: 'CREATE';
+INDEX: 'INDEX'; 
 DROP: 'DROP';
 TABLE: 'TABLE';
 UPDATE: 'UPDATE';
@@ -79,4 +90,5 @@ FORGIEN_KEY: 'FORGIEN KEY';
 
 WS        : [ \t\n\r]+ -> skip;
 ID : [a-zA-Z0-9]+ ;
+
 
