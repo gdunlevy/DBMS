@@ -22,17 +22,59 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuery(RestrictedSQLParser.QueryContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTableCommand(RestrictedSQLParser.TableCommandContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#createTable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCreateTable(RestrictedSQLParser.CreateTableContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#dropTable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDropTable(RestrictedSQLParser.DropTableContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#createIndex}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCreateIndex(RestrictedSQLParser.CreateIndexContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#dropIndex}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDropIndex(RestrictedSQLParser.DropIndexContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#indexSel}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndexSel(RestrictedSQLParser.IndexSelContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#colSel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitColSel(RestrictedSQLParser.ColSelContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#colAtt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTableCommand(RestrictedSQLParser.TableCommandContext ctx);
+	T visitColAtt(RestrictedSQLParser.ColAttContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#key}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitKey(RestrictedSQLParser.KeyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#tableSelect}.
 	 * @param ctx the parse tree

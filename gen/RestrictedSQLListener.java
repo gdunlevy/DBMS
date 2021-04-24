@@ -27,6 +27,66 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitQuery(RestrictedSQLParser.QueryContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
+	 * @param ctx the parse tree
+	 */
+	void enterTableCommand(RestrictedSQLParser.TableCommandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
+	 * @param ctx the parse tree
+	 */
+	void exitTableCommand(RestrictedSQLParser.TableCommandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#createTable}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreateTable(RestrictedSQLParser.CreateTableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#createTable}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreateTable(RestrictedSQLParser.CreateTableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#dropTable}.
+	 * @param ctx the parse tree
+	 */
+	void enterDropTable(RestrictedSQLParser.DropTableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#dropTable}.
+	 * @param ctx the parse tree
+	 */
+	void exitDropTable(RestrictedSQLParser.DropTableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#createIndex}.
+	 * @param ctx the parse tree
+	 */
+	void enterCreateIndex(RestrictedSQLParser.CreateIndexContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#createIndex}.
+	 * @param ctx the parse tree
+	 */
+	void exitCreateIndex(RestrictedSQLParser.CreateIndexContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#dropIndex}.
+	 * @param ctx the parse tree
+	 */
+	void enterDropIndex(RestrictedSQLParser.DropIndexContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#dropIndex}.
+	 * @param ctx the parse tree
+	 */
+	void exitDropIndex(RestrictedSQLParser.DropIndexContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#indexSel}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndexSel(RestrictedSQLParser.IndexSelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#indexSel}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndexSel(RestrictedSQLParser.IndexSelContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#colSel}.
 	 * @param ctx the parse tree
 	 */
@@ -37,15 +97,25 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitColSel(RestrictedSQLParser.ColSelContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#colAtt}.
 	 * @param ctx the parse tree
 	 */
-	void enterTableCommand(RestrictedSQLParser.TableCommandContext ctx);
+	void enterColAtt(RestrictedSQLParser.ColAttContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#colAtt}.
 	 * @param ctx the parse tree
 	 */
-	void exitTableCommand(RestrictedSQLParser.TableCommandContext ctx);
+	void exitColAtt(RestrictedSQLParser.ColAttContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#key}.
+	 * @param ctx the parse tree
+	 */
+	void enterKey(RestrictedSQLParser.KeyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#key}.
+	 * @param ctx the parse tree
+	 */
+	void exitKey(RestrictedSQLParser.KeyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#tableSelect}.
 	 * @param ctx the parse tree
