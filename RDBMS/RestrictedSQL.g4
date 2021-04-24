@@ -16,8 +16,10 @@ tableCommand: createTable
        | dropIndex;
 
 createTable:
-        CREATE TABLE tableSelect '('colSel (',' colSel )* key');';
+	CREATE TABLE tableSelect '('colSel (',' colSel )* ',' key');'; //need to take into consideration the attributes and the NULL/NOT NULL
+       //|'CREATE' 'TABLE' tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* ',' key')'';'
 
+        
 dropTable:
       DROP TABLE tableSelect;
 
