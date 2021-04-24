@@ -1,14 +1,11 @@
 package RDBMS;
 
-import gen.RestrictedSQLLexer;
-import gen.RestrictedSQLParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
-
 
 public class Main {
 	public static void main(String[] args) throws Exception
@@ -20,9 +17,6 @@ public class Main {
 
 	
 		 RestrictedSQLLexer lexer = new RestrictedSQLLexer(input);
-		 CommonTokenStream token = new CommonTokenStream(lexer);
-		 RestrictedSQLParser parser = new RestrictedSQLParser(token);
-		 ParseTree queryTree = parser.statement();
 		 CommonTokenStream tokens = new CommonTokenStream(lexer);
 
 		 // Print the token stream.
@@ -31,43 +25,29 @@ public class Main {
 		 String here = tokens.toString();
 
 		 ArrayList<String> tokenList = new ArrayList<String>();
-
+		 
 		 for (Token token : tokens.getTokens())
 		 {
 			 System.out.println(token.toString());
-			 tokenList.add(here); // need to be able to extract the ID some how
+			 tokenList.add(here);
 			 //System.out.println(tokenList);
-
+			 
 		 }
-
-		 parser = new RestrictedSQLParser(tokens);
-		 queryTree = parser.query();
-
+		 RestrictedSQLParser parser = new RestrictedSQLParser(tokens);
+		 ParseTree queryTree = parser.statement(); //or use parser.statment();
+		 
 		 String query = queryTree.toStringTree(parser);
 		 System.out.println(query);
 		 
-		 ParseTree tableTree = parser.tableSelect(); // PROBLEM: only printing out 'tableSelect' instead of the ID
-		 String table = tableTree.toStringTree(parser);
-		 System.out.println(table);
-
-		 ParseTree colTree = parser.colSel();
-		 String column = colTree.toStringTree(parser); // PROBLEM: only printing out 'colSel' instead of the ID
-		 System.out.println(column);
-
-
-		 Database data = new Database();
-		 ArrayList<String> columnList = new ArrayList<String>();
-		 columnList.add(column);
-		 System.out.println("column List "+columnList);
-		 data.createTable(table, columnList);
-
-	
-
+		 
 		 RestrictedSQLActiveVisitor visitor = new RestrictedSQLActiveVisitor(new Database());
 		 queryTree.accept(visitor);
+		 
+		 visitor.visitCreateTable(null); // what do we need to put in here?
+		
+	
 	 }
 } 
-
 
 /* THIS WAS THE OUT PUT OF THE MAIN:
 Tokens:
