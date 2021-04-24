@@ -19,14 +19,15 @@ class Database {
         return -1;
     }
 
-    public void createTable(String name, List<String> columnNames) {
+    public void createTable(String name, ArrayList<String> columnNames) {
         int index = findTable(name);
-        if (i != -1) {
-            throw IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
+        if (index != -1) {
+            throw new IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
         }
 
-        Table entry = new Table(name, columnNames);
-        table.insert(entry);
+        
+        ArrayList<Map<String,ArrayList>> entry; //need to either change this columnnames to an object or chnage the insert()
+        Table.insert(entry);
         System.out.println("Table " + name + " has been added to database.");
         System.out.println("The columns associated with Table " + name + " are: " + columnNames);
     }
@@ -34,10 +35,10 @@ class Database {
 
     public void dropTable(String name) {
         int index = findTable(name);
-        if (i == -1) {
-            throw IllegalArgumentException("ERROR: Table " + name + " does not exists in the database.");
+        if (index == -1) {
+            throw new IllegalArgumentException("ERROR: Table " + name + " does not exists in the database.");
         }
-        tables.remove(index);
+        Table.delete(index);
         System.out.println("Table " + name + " has been dropped from database.");
 
     }
