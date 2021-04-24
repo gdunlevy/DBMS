@@ -9,9 +9,6 @@ class Database {
      * <p>
      * parsed statements interact with this classes public methods.   RestrictedSQLBaseListener
      */
-    public Database() {
-
-    }
 
     private int findTable(String name) {
         for (int i = 0; i < tablesList.size(); i++) {
