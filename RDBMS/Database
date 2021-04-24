@@ -2,7 +2,6 @@ package RDBMS;
 
 import java.util.*;
 
-
 class Database {
 
     private ArrayList<Table> tablesList = new ArrayList<>();
@@ -27,7 +26,7 @@ class Database {
         if (index != -1) {
             throw new IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
         }
-        tablesList.add(new Table(name, columnNames);
+        tablesList.add(new Table(name, columnNames));
         System.out.println("Table " + name + " has been added to database.");
         System.out.println("The columns associated with Table " + name + " are: " + columnNames);
     }
