@@ -1,29 +1,73 @@
+import java.util.*;
+
 class Database
 {
-    private ArrayLists<Table> tables = new ArrayList();
+	
+    private ArrayList<Table> tablesList = new ArrayList();
+    private ArrayList<Table> indexList = new ArrayList();
+    Table table; 
+    Table index; 
 
     /**
      *  hold the tables.
      *
      *  parsed statements interact with this classes public methods.
      */
-    public Database(){    }
+    public Database(){ 
+    	
+    }
 
     private int findTable(String name){
+    	//get the table from the parser?
         return 0;
     }
+    
     //TODO: add rest of table arguements. make work
-    public void createTable(String name, List<String> columnNames){}
-
-    //delete table from tables
-    public void dropTable(String name){
-
+    public void createTable(String name, List<String> columnNames){
+    	if (tablesList.contains(name)) {
+    		System.out.println("ERROR: " + name + " already exists in the database. Please pick another name" );
+    	}
+    	else { 
+    		table.insert(name);
+    		System.out.println(name + " has been added to database.");
+    		System.out.println("The columns associated with " + name + " are: " + columnNames); 
+    	}
+    	
     }
 
-    public List<> select(){}
+    public void dropTable(String name){
+    	if (tablesList.contains(name)) {
+    		table.delete(name);
+    		System.out.println(name + " has been dropped.");
+    	}
+    	else { 
+    		System.out.println("ERROR: this table does not exsit in the database. ");
+    	}
+    }
 
-    public void createIndex(){    }
+    public ArrayList<String> select (ArrayList list){
+        return list;
+	}
 
-    public void dropIndex(){}
+    public void createIndex(String idx){   
+    	if (indexList.contains(idx)) {
+    		System.out.println("ERROR: " + idx + " already exists in the database. Please pick another name" );
+    	}
+    	else { 
+    		index.insert(idx);
+    		System.out.println(idx + " has been added to the table.");
+    	}
+    }
+
+    public void dropIndex(String idx){
+    	if (indexList.contains(idx)) {
+    		table.delete(idx);
+    		System.out.println(idx + " has been dropped.");
+    	}
+    	else { 
+    		System.out.println("ERROR: this index does not exsit in the table. ");    	
+    	}
+    	
+    }
 
 }
