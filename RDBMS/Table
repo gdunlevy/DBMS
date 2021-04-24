@@ -18,7 +18,7 @@ class Table {
     public Table(String name, ArrayList<String> columnNames) {
         this.tableName = name;
         this.columnNames = columnNames;
-        this.records = new BTree(); //doesn't like this at all. It wants a btree class or package i think 
+        this.records = new BTree();
         keyindex = 0;
     }
 
