@@ -1,17 +1,37 @@
 class Table{
 
-    private btree data;
+    private String tableName;
+    private ArrayList<String> columnNames;
 
+    ///this is probly bad design here leave for now
+    private int keyindex;
     /**
      * hold data in btree
      * accessable through Database class methods
      */
-    public Table(){
-        data = new BTree();
+    public Table(String name, ArrayList<String> columnNames){
+        this.tableName = name;
+        this.columnNames = columnNames;
+        this.records = new BTree();
+        keyindex = 0;
     }
 
-   public void  insert(){ }
-    
+    public String getName() {
+        return tableName;
+    }
+
+
+    public void  insert(ArrayList<Map<String,Object>> data)
+   {
+       /**
+        *
+        */
+       for(Map<String,Object> record : data){
+           if(record.keyset().)
+       }
+        records.put(++key,data)
+   }
+
    public void delete(){}
 
    public void select(){}

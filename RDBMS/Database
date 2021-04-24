@@ -1,52 +1,56 @@
 import java.util.*;
 
-class Database
-{
-	
+class Database {
+
     private ArrayList<Table> tablesList = new ArrayList();
-    Table table; 
 
     /**
-     *  hold the tables.
-     *
-     *  parsed statements interact with this classes public methods.   RestrictedSQLBaseListener
-
+     * hold the tables.
+     * <p>
+     * parsed statements interact with this classes public methods.   RestrictedSQLBaseListener
      */
-    public Database(){ 
-    	
+    public Database() {
+
     }
 
-    private int findTable(String name){
-        return 0;
-    }
-    
-    //TODO: add rest of table arguements. make work
-    public void createTable(String name, List<String> columnNames){
-    	if (tablesList.contains(name)) {
-    		System.out.println("ERROR: " + name + " already exists in the database. Please pick another name" );
-    	}
-    	else { 
-    		table.insert(name);
-    		System.out.println(name + " has been added to database.");
-    		System.out.println("The columns associated with " + name + " are: " + columnNames); 
-    	}
-    	
+    private int findTable(String name) {
+        for (int i = 0; i < tablesList.size(); i++) {
+            if (Table.getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
-    public void dropTable(String name){
-    	if (tablesList.contains(name)) {
-    		table.delete(name);
-    		System.out.println(name + " has been dropped.");
-    	}
-    	else { 
-    		System.out.println("ERROR: this table does not exsit in the database. ");
-    	}
+    public void createTable(String name, List<String> columnNames) {
+        int index = findTable(name);
+        if (i != -1) {
+            throw IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
+        }
+
+        Table entry = new Table(name, columnNames);
+        table.insert(entry);
+        System.out.println("Table " + name + " has been added to database.");
+        System.out.println("The columns associated with Table " + name + " are: " + columnNames);
     }
 
-    public ArrayList<String> select (ArrayList table){
-    		
-		return table;
-		}
+
+    public void dropTable(String name) {
+        int index = findTable(name);
+        if (i == -1) {
+            throw IllegalArgumentException("ERROR: Table " + name + " does not exists in the database.");
+        }
+        tables.remove(index);
+        System.out.println("Table " + name + " has been dropped from database.");
+
+    }
+
+
+    //TODO
+    public ArrayList<String> select(ArrayList<String> table) {
+
+        return table;
+    }
 
     /*
     public void createIndex(String idx){   
