@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Table{
 
     private String tableName;
@@ -12,7 +14,7 @@ class Table{
     public Table(String name, ArrayList<String> columnNames){
         this.tableName = name;
         this.columnNames = columnNames;
-        this.records = new BTree();
+        this.records = new BTree(); //doesn't like this at all. It wants a btree class or package i think 
         keyindex = 0;
     }
 
@@ -27,12 +29,14 @@ class Table{
         *
         */
        for(Map<String,Object> record : data){
-           if(record.keyset().)
+           if(record.keySet() != null); //not sure if this is what you wanted to do
        }
-        records.put(++key,data)
+        records.put(++keyindex,data); //changed key to keyindex
    }
 
-   public void delete(){}
+   public static void delete(int index){
+	   //remove table name from the tree
+   }
 
    public void select(){}
 }
