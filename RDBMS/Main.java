@@ -14,7 +14,7 @@ public class Main {
 		 RestrictedSQLLexer lexer = new RestrictedSQLLexer(input);
 		 CommonTokenStream token = new CommonTokenStream(lexer)
 		 RestrictedSQLParser parser = new RestrictedSQLParser(token);
-		 ParseTree tree = parser.query(); 
+		 ParseTree tree = parser.query(); //or use parser.statment();
 	
 		 // Print the parse tree in Lisp format.
 		 System.out.println("\nParse tree (Lisp format):");
