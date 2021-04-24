@@ -1,8 +1,13 @@
 package RDBMS;
 
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
-import java.util.*;
+import gen.RestrictedSQLLexer;
+import gen.RestrictedSQLParser;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.util.ArrayList;
 
 
 public class Main {
@@ -15,6 +20,9 @@ public class Main {
 
 	
 		 RestrictedSQLLexer lexer = new RestrictedSQLLexer(input);
+		 CommonTokenStream token = new CommonTokenStream(lexer);
+		 RestrictedSQLParser parser = new RestrictedSQLParser(token);
+		 ParseTree queryTree = parser.statement();
 		 CommonTokenStream tokens = new CommonTokenStream(lexer);
 
 		 // Print the token stream.
@@ -23,41 +31,45 @@ public class Main {
 		 String here = tokens.toString();
 
 		 ArrayList<String> tokenList = new ArrayList<String>();
-		 
+
 		 for (Token token : tokens.getTokens())
 		 {
 			 System.out.println(token.toString());
 			 tokenList.add(here); // need to be able to extract the ID some how
 			 //System.out.println(tokenList);
-			 
+
 		 }
-		 RestrictedSQLParser parser = new RestrictedSQLParser(tokens);
-		 ParseTree queryTree = parser.query(); 
-		 
+
+		 parser = new RestrictedSQLParser(tokens);
+		 queryTree = parser.query();
+
 		 String query = queryTree.toStringTree(parser);
 		 System.out.println(query);
 		 
-		 ParseTree tableTree = parser.tableSelect(); // PROBLEM: only printing out 'tableSelect' instead of the ID 
+		 ParseTree tableTree = parser.tableSelect(); // PROBLEM: only printing out 'tableSelect' instead of the ID
 		 String table = tableTree.toStringTree(parser);
 		 System.out.println(table);
-		 
-		 ParseTree colTree = parser.colSel(); 
-		 String column = colTree.toStringTree(parser); // PROBLEM: only printing out 'colSel' instead of the ID 
-		 System.out.println(column); 
-		 
-		 
+
+		 ParseTree colTree = parser.colSel();
+		 String column = colTree.toStringTree(parser); // PROBLEM: only printing out 'colSel' instead of the ID
+		 System.out.println(column);
+
+
 		 Database data = new Database();
 		 ArrayList<String> columnList = new ArrayList<String>();
 		 columnList.add(column);
 		 System.out.println("column List "+columnList);
 		 data.createTable(table, columnList);
-		
+
 	
+
+		 RestrictedSQLActiveVisitor visitor = new RestrictedSQLActiveVisitor(new Database());
+		 queryTree.accept(visitor);
 	 }
 } 
 
 
-/* THIS WAS THE OUT PUT OF THE MAIN: 
+/* THIS WAS THE OUT PUT OF THE MAIN:
 Tokens:
 [@0,0:5='SELECT',<2>,1:0]
 [@1,7:8='c1',<44>,1:7]
@@ -72,5 +84,5 @@ colSel
 line 2:0 mismatched input '<EOF>' expecting {'*', ID}
 column List [colSel]
 Table tableSelect has been added to database.
-The columns associated with Table tableSelect are: [colSel]. 
+The columns associated with Table tableSelect are: [colSel].
 */
