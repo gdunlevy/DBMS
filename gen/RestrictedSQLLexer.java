@@ -1,4 +1,5 @@
 // Generated from C:/Users/Andrew/DBMS/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
+package gen;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

@@ -1,6 +1,8 @@
-import java.io.*;
+package RDBMS;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+import gen.*;
 
 public class Main {
 	public static void main(String[] args) throws Exception
@@ -12,7 +14,7 @@ public class Main {
 
 	
 		 RestrictedSQLLexer lexer = new RestrictedSQLLexer(input);
-		 CommonTokenStream token = new CommonTokenStream(lexer)
+		 CommonTokenStream token = new CommonTokenStream(lexer);
 		 RestrictedSQLParser parser = new RestrictedSQLParser(token);
 		 ParseTree tree = parser.query(); //or use parser.statment();
 	

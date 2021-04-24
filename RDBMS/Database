@@ -1,8 +1,11 @@
+package RDBMS;
+
 import java.util.*;
+
 
 class Database {
 
-    private ArrayList<Table> tablesList = new ArrayList();
+    private ArrayList<Table> tablesList = new ArrayList<>();
 
     /**
      * hold the tables.
@@ -12,7 +15,7 @@ class Database {
 
     private int findTable(String name) {
         for (int i = 0; i < tablesList.size(); i++) {
-            if (Table.getName().equals(name)) {
+            if (tablesList.get(i).getName().equals(name)) {
                 return i;
             }
         }
@@ -24,10 +27,7 @@ class Database {
         if (index != -1) {
             throw new IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
         }
-
-        
-        ArrayList<Map<String,ArrayList>> entry; //need to either change this columnnames to an object or chnage the insert()
-        Table.insert(entry);
+        tablesList.add(new Table(name, columnNames);
         System.out.println("Table " + name + " has been added to database.");
         System.out.println("The columns associated with Table " + name + " are: " + columnNames);
     }
