@@ -21,6 +21,9 @@ public class Main {
 		 // Print the parse tree in Lisp format.
 		 System.out.println("\nParse tree (Lisp format):");
 		 System.out.println(tree.toStringTree(parser));
+
+		 RestrictedSQLActiveVisitor visitor = new RestrictedSQLActiveVisitor(new Database());
+		 tree.accept(visitor);
 	
 	 }
 } 
