@@ -2,6 +2,7 @@ package RDBMS;
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+import java.util.*;
 
 
 public class Main {
@@ -14,24 +15,39 @@ public class Main {
 
 	
 		 RestrictedSQLLexer lexer = new RestrictedSQLLexer(input);
-		 CommonTokenStream token = new CommonTokenStream(lexer);
-		 RestrictedSQLParser parser = new RestrictedSQLParser(token);
+		 CommonTokenStream tokens = new CommonTokenStream(lexer);
+
+		 // Print the token stream.
+		 System.out.println("Tokens:");
+		 tokens.fill();
+		 String here = tokens.toString();
+
+		 ArrayList<String> tokenList = new ArrayList<String>();
+		 
+		 for (Token token : tokens.getTokens())
+		 {
+			 System.out.println(token.toString());
+			 tokenList.add(here);
+			 //System.out.println(tokenList);
+			 
+		 }
+		 RestrictedSQLParser parser = new RestrictedSQLParser(tokens);
 		 ParseTree queryTree = parser.query(); //or use parser.statment();
 		 
 		 String query = queryTree.toStringTree(parser);
 		 System.out.println(query);
 		 
 		 
-		 ParseTree columnTree = parser.colSel();
-		 String column = columnTree.toStringTree(parser);
-		 System.out.println(column);
-		 
-		 ParseTree tableTree = parser.tableSelect();
-		 String table = tableTree.toStringTree(parser);
-		 System.out.println(table);
+		 Database data = new Database();
+		 ArrayList<String> columnList = new ArrayList<String>();
+		 //columnList.add(column);
+		 System.out.println("colum List "+columnList);
+		 //data.createTable(table, columnList);
 		 
 		 
 		 
+		 
+		
 	
 	 }
 } 
