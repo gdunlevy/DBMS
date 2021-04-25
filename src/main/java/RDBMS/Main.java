@@ -2,49 +2,42 @@ package RDBMS;
 
 import gen.RestrictedSQLLexer;
 import gen.RestrictedSQLParser;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        boolean run = true;
+        CharStream input;
+        RestrictedSQLLexer lexer;
+        CommonTokenStream tokenStream;
+        RestrictedSQLParser parser;
+        ParseTree queryTree;
+        RestrictedSQLActiveVisitor visitor = new RestrictedSQLActiveVisitor(new Database());
+        Scanner inputStream = new Scanner(System.in);
+        while (run) {
+            System.out.print("Enter Query: ");
+            input = CharStreams.fromString(inputStream.nextLine()); //control D
+            System.out.println();
 
-        System.out.print("Enter Query: ");
-        ANTLRInputStream input = new ANTLRInputStream(System.in); //control D
-        System.out.println();
+            lexer = new RestrictedSQLLexer(input);
+            tokenStream = new CommonTokenStream(lexer);
+            parser = new RestrictedSQLParser(tokenStream);
+            queryTree = parser.statement();
+            //CommonTokenStream tokens = new CommonTokenStream(lexer);
 
 
-        RestrictedSQLLexer lexer = new RestrictedSQLLexer(input);
-        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        RestrictedSQLParser parser = new RestrictedSQLParser(tokenStream);
-        ParseTree queryTree = parser.statement();
-        //CommonTokenStream tokens = new CommonTokenStream(lexer);
+            String query = queryTree.toStringTree(parser);
+            System.out.println(query);
 
-        /**
-        // Print the token stream.
-        System.out.println("Tokens:");
-        tokens.fill();
-        String here = tokens.toString();
 
-        ArrayList<String> tokenList = new ArrayList<String>();
 
-        for (Token token : tokens.getTokens()) {
-            System.out.println(token.toString());
-            tokenList.add(here); // need to be able to extract the ID some how
-            //System.out.println(tokenList);
+            queryTree.accept(visitor);
 
         }
-
-        parser = new RestrictedSQLParser(tokens);
-        queryTree = parser.query();
-        */
-        String query = queryTree.toStringTree(parser);
-        System.out.println(query);
-
-
-        RestrictedSQLActiveVisitor visitor = new RestrictedSQLActiveVisitor(new Database());
-        queryTree.accept(visitor);
     }
 } 
 
