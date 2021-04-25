@@ -7,15 +7,13 @@ public class Condition {
 
     private Operation op;
 
-    private String tableName;
 
     private String columnName;
 
     private String rightSide;
 
-    public Condition(Operation op, String tableName, String columnName, String rightSide) {
+    public Condition(Operation op, String columnName, String rightSide) {
         this.op = op;
-        this.tableName = tableName;
         this.columnName = columnName;
         this.rightSide = rightSide;
     }

@@ -40,7 +40,6 @@ class Table {
             record.put(columnNames.get(i), data.get(i));
         }
         records.put(data.get(0), record); //changed key to keyindex
-        System.out.println("Record entered");
     }
 
     void delete(Condition cond)

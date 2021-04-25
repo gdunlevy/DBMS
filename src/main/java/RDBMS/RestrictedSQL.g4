@@ -14,7 +14,7 @@ insertQuery:
     INSERT INTO tableSelect VALUES '('(values ',')* values ')';
 
 deleteQuery:
-     DELETE FROM tableSelect ?whereCond;
+     DELETE FROM tableSelect whereCond;
 
 tableCommand: createTable
        | dropTable
@@ -45,25 +45,30 @@ colSel: '*'
     | ID;
 
 colAtt:
-	|VARCHAR '('ID')'
+	VARCHAR '('ID')'
 	|INT
 	|FLOAT
 	|NULL
 	|NOT_NULL;
 
 key:
-	| ',' PRIMARY_KEY '(' colSel')';
+	 ',' PRIMARY_KEY '(' colSel')';
 
 
 
 tableSelect: ID;
 
-condition: colSel '=' ID
-    | colSel '>' ID
-    | colSel '>=' ID
-    | colSel '<' ID
-    | colSel '<=' ID
-    | ID;
+condition: equal
+          | greater
+          | less
+          | lteq
+          | gteg;
+
+equal: colSel '=' ID;
+greater: colSel '>' ID;
+less: colSel '>=' ID;
+lteq: colSel '<' ID;
+gteg:  colSel '<=' ID;
 
     
 

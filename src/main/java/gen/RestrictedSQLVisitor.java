@@ -118,4 +118,34 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCondition(RestrictedSQLParser.ConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#equal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqual(RestrictedSQLParser.EqualContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#greater}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGreater(RestrictedSQLParser.GreaterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#less}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLess(RestrictedSQLParser.LessContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#lteq}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLteq(RestrictedSQLParser.LteqContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#gteg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGteg(RestrictedSQLParser.GtegContext ctx);
 }

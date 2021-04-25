@@ -20,7 +20,7 @@ public class Main {
         Scanner inputStream = new Scanner(System.in);
         while (run) {
             System.out.print("Enter Query: ");
-            input = CharStreams.fromString(inputStream.nextLine()); //control D
+            input = CharStreams.fromString(inputStream.nextLine());
             System.out.println();
 
             lexer = new RestrictedSQLLexer(input);

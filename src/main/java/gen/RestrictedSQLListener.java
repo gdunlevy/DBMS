@@ -187,4 +187,54 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCondition(RestrictedSQLParser.ConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#equal}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqual(RestrictedSQLParser.EqualContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#equal}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqual(RestrictedSQLParser.EqualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#greater}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreater(RestrictedSQLParser.GreaterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#greater}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreater(RestrictedSQLParser.GreaterContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#less}.
+	 * @param ctx the parse tree
+	 */
+	void enterLess(RestrictedSQLParser.LessContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#less}.
+	 * @param ctx the parse tree
+	 */
+	void exitLess(RestrictedSQLParser.LessContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#lteq}.
+	 * @param ctx the parse tree
+	 */
+	void enterLteq(RestrictedSQLParser.LteqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#lteq}.
+	 * @param ctx the parse tree
+	 */
+	void exitLteq(RestrictedSQLParser.LteqContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#gteg}.
+	 * @param ctx the parse tree
+	 */
+	void enterGteg(RestrictedSQLParser.GtegContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#gteg}.
+	 * @param ctx the parse tree
+	 */
+	void exitGteg(RestrictedSQLParser.GtegContext ctx);
 }
