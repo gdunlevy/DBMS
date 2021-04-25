@@ -137,4 +137,27 @@ class Table {
         }
         return result.toString();
     }
+    public void toExportString(String result){
+        String outputFilePath = " ";
+
+        File file = new File (outputFilePath);
+
+        BufferedWriter bf = null; 
+
+        try{ 
+            bf = new BufferedWrited (new FilerWriter(file,new));
+            bf.write(result);
+            bf.newLine();
+            bf.flush();
+        }
+        catch(IOException e){
+                e.printStackTrace();
+            }finally{
+
+                try{
+                    //always close the writer
+                    bf.close();
+                }catch(Exception e){}
+            }
+    }
 }
