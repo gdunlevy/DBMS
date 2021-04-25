@@ -21,7 +21,7 @@ public class Database {
         return -1;
     }
 
-    public void createTable(String name, ArrayList<String> columnNames) {
+    void createTable(String name, ArrayList<String> columnNames) {
         int index = findTable(name);
         if (index != -1) {
             throw new IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
@@ -32,13 +32,30 @@ public class Database {
     }
 
 
-    public void dropTable(String name) {
+    void dropTable(String name) {
         int index = findTable(name);
         if (index == -1) {
             throw new IllegalArgumentException("ERROR: Table " + name + " does not exists in the database.");
         }
-        Table.delete(index);
+        tablesList.remove(index);
         System.out.println("Table " + name + " has been dropped from database.");
+
+    }
+
+    void insert(String tableName, ArrayList<Comparable> data) {
+        int index = findTable(tableName);
+        if (index == -1) {
+            throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
+        }
+        tablesList.get(index).insert(data);
+    }
+
+    void delete(String tableName, Comparable primaryKey) {
+        int index = findTable(tableName);
+        if (index == -1) {
+            throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
+        }
+        tablesList.get(index).delete(primaryKey);
 
     }
 

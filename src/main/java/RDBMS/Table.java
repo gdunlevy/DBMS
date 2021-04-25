@@ -1,15 +1,15 @@
 package RDBMS;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 class Table {
 
     private String tableName;
     private ArrayList<String> columnNames;
-    private BTree records;
-
-    ///this is probly bad design here leave for now
-    private int keyindex;
+    private TreeMap records;
 
     /**
      * hold data in btree
@@ -18,8 +18,7 @@ class Table {
     public Table(String name, ArrayList<String> columnNames) {
         this.tableName = name;
         this.columnNames = columnNames;
-        this.records = new BTree(); //doesn't like this at all. It wants a btree class or package i think
-        keyindex = 0;
+        this.records = new TreeMap();
     }
 
     public String getName() {
@@ -27,18 +26,30 @@ class Table {
     }
 
 
-    public void insert(ArrayList<Map<String, Object>> data) {
-        /**
-         *
-         */
-        for (Map<String, Object> record : data) {
-            if (record.keySet() != null) ; //not sure if this is what you wanted to do
+    public void insert(ArrayList<Comparable> data)
+    {
+        Map<String, Object> record = new HashMap<>();
+        // assume
+        if (records.containsKey(data.get(0))){
+            throw new IllegalArgumentException("Duplicate primary key");
         }
-        records.put(++keyindex, data); //changed key to keyindex
+        if (columnNames.size() != data.size()) {
+            throw new IllegalArgumentException("Data does not amount of columns");
+        }
+        for (int i = 0; i < columnNames.size(); i++) {
+            record.put(columnNames.get(i), data.get(i));
+        }
+        records.put(data.get(0), record); //changed key to keyindex
+        System.out.println("Record entered");
     }
 
-    public static void delete(int index) {
-        //remove table name from the tree
+    public void delete(Comparable primaryKey)
+    {
+        if(!records.containsKey(primaryKey)){
+            throw new IllegalArgumentException("Absent primary key");
+        }
+        records.remove(primaryKey);
+        System.out.println("Record removed");
     }
 
     public void select() {
