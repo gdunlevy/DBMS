@@ -19,7 +19,7 @@ public class WriteHashMapToTextFileExample {
         try{
             
             //create new BufferedWriter for the output file
-            bf = new BufferedWriter( new FileWriter(file) );
+            bf = new BufferedWriter( new FileWriter(file, true) );
             //iterate map entries
             for(Map.Entry<String, Map<String,String>> entry : databaseTree.entrySet()){
                 //put key and value separated by a colon
