@@ -27,13 +27,10 @@ public class Main {
             tokenStream = new CommonTokenStream(lexer);
             parser = new RestrictedSQLParser(tokenStream);
             queryTree = parser.statement();
-            //CommonTokenStream tokens = new CommonTokenStream(lexer);
-
+      
 
             String query = queryTree.toStringTree(parser);
             System.out.println(query);
-
-
 
             queryTree.accept(visitor);
 
