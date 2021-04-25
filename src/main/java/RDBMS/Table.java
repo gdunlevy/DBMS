@@ -132,8 +132,9 @@ class Table {
         result.append(columnNames).append("\n");
         for(String key : records.keySet()){
             for (String columnName: columnNames){
-                result.append(records.get(key).get(columnName)).append("\n");
+                result.append(records.get(key).get(columnName)).append(" ");
             }
+            result.append("\n");
         }
         return result.toString();
     }

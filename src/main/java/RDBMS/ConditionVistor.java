@@ -3,15 +3,12 @@ package RDBMS;
 import gen.RestrictedSQLBaseVisitor;
 import gen.RestrictedSQLParser;
 
-import java.util.List;
-
 public class ConditionVistor extends RestrictedSQLBaseVisitor {
 
     Database database;
     Table mainTable;
 
-    ConditionVistor(Database database, Table mainTable)
-    {
+    ConditionVistor(Database database, Table mainTable) {
         this.database = database;
         this.mainTable = mainTable;
     }
@@ -22,33 +19,26 @@ public class ConditionVistor extends RestrictedSQLBaseVisitor {
     }
 
     @Override
-    public Table visitConditionList(RestrictedSQLParser.ConditionListContext ctx)
-    {
+    public Table visitConditionList(RestrictedSQLParser.ConditionListContext ctx) {
         return (Table) visitChildren(ctx);
     }
 
     @Override
     public Object visitOrCond(RestrictedSQLParser.OrCondContext ctx) {
-        List<RestrictedSQLParser.ConditionContext> conditions = ctx.condition();
-        Table left = visitCondition(conditions.get(0));
-        if(conditions.size() > 1){
-            return left.orCombine(visitCondition(conditions.get(1)));
-        }
-        return left.orCombine(visitConditionList(ctx.conditionList()));
+        Table left = (Table) visitLeft(ctx.left());
+        Table right = (Table) visitRight(ctx.right());
+        return left.orCombine(right);
     }
 
     @Override
     public Object visitAndCond(RestrictedSQLParser.AndCondContext ctx) {
-        List<RestrictedSQLParser.ConditionContext> conditions = ctx.condition();
-        Table left = visitCondition(conditions.get(0));
-        if(conditions.size() > 1){
-            return left.andCombine(visitCondition(conditions.get(1)));
-        }
-        return left.andCombine(visitConditionList(ctx.conditionList()));
+        Table left = (Table) visitLeft(ctx.left());
+        Table right = (Table) visitRight(ctx.right());
+        return left.andCombine(right);
     }
 
     @Override
-    public Table visitCondition(RestrictedSQLParser.ConditionContext ctx){
+    public Table visitCondition(RestrictedSQLParser.ConditionContext ctx) {
         return (Table) visitChildren(ctx);
     }
 

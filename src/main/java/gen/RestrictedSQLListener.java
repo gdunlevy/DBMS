@@ -148,6 +148,26 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitAndCond(RestrictedSQLParser.AndCondContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#left}.
+	 * @param ctx the parse tree
+	 */
+	void enterLeft(RestrictedSQLParser.LeftContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#left}.
+	 * @param ctx the parse tree
+	 */
+	void exitLeft(RestrictedSQLParser.LeftContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#right}.
+	 * @param ctx the parse tree
+	 */
+	void enterRight(RestrictedSQLParser.RightContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#right}.
+	 * @param ctx the parse tree
+	 */
+	void exitRight(RestrictedSQLParser.RightContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#indexSel}.
 	 * @param ctx the parse tree
 	 */

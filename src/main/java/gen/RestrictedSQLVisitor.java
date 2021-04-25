@@ -95,6 +95,18 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAndCond(RestrictedSQLParser.AndCondContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#left}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLeft(RestrictedSQLParser.LeftContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#right}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRight(RestrictedSQLParser.RightContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#indexSel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -42,11 +42,19 @@ conditionList:
    | andCond;
 
 orCond:
-    condition 'OR' (condition | conditionList) ;
+    left 'OR' right ;
 
 andCond:
-    condition 'AND' (condition | conditionList);
-indexSel: ID;  
+    left 'AND' right;
+
+left: condition
+    |'(' conditionList ')' ;
+
+right:condition
+      | conditionList ;
+
+indexSel: ID;
+
 
 values: ID;
 
