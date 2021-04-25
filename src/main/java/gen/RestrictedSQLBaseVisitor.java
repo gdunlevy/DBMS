@@ -52,7 +52,7 @@ public class RestrictedSQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInsertEntry(RestrictedSQLParser.InsertEntryContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInsertEntry(RestrictedSQLParser.QueryContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
