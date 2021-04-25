@@ -40,22 +40,20 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
         }
         return visitChildren(ctx);
     }
-    
-    @Override
-    public Object visitInsertEntry(RestrictedSQLParser.QueryContext ctx) {
-        //INSERT INTO TABLE tableSelect VALUES VALUES '('ID (',' ID)* ')'
-        ArrayList<Integer> InsertValues = new ArrayList<>();
-        for (RestrictedSQLParser.valuesContext id : ctx.values()) {
-            InsertValues.add(id.getText());
 
-        } try{
-            database.insert(InsertValues);
+    @Override public Object visitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx) {
+        //INSERT INTO TABLE tableSelect VALUES VALUES '('ID (',' ID)* ')'
+        ArrayList<String> InsertValues = new ArrayList<>();
+        for ( RestrictedSQLParser.ValuesContext val : ctx.values()) {
+            InsertValues.add(val.getText());
+        }
+        try{
+            database.insert(ctx.tableSelect().getText(), InsertValues);
             System.out.println("Values " + InsertValues + " were inserted");
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return visitChildren(ctx);
-
     }
 
 }

@@ -1,4 +1,4 @@
-// Generated from C:/Users/Andrew/DBMS/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
+// Generated from C:/Users/Andrew/DBMS/src/main/java/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
 package gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -23,6 +23,24 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuery(RestrictedSQLParser.QueryContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#selectQuery}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSelectQuery(RestrictedSQLParser.SelectQueryContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#insertQuery}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#deleteQuery}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -45,12 +63,6 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInsertEntry(RestrictedSQLParser.QueryContext ctx); 
-	/**
-	 * Visit a parse tree produced by {@link RestrictedSQLParser#insertValues}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
 	T visitCreateIndex(RestrictedSQLParser.CreateIndexContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#dropIndex}.
@@ -59,11 +71,23 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDropIndex(RestrictedSQLParser.DropIndexContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#whereCond}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhereCond(RestrictedSQLParser.WhereCondContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#indexSel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitIndexSel(RestrictedSQLParser.IndexSelContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#values}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValues(RestrictedSQLParser.ValuesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#colSel}.
 	 * @param ctx the parse tree

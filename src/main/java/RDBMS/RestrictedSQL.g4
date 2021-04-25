@@ -3,12 +3,18 @@ grammar RestrictedSQL;
 statement : query
     | tableCommand;
 
-query: SELECT colSel FROM tableSelect WHERE condition (AND condition)*
-       |SELECT colSel (',' colSel)* FROM tableSelect
-       | SELECT colSel FROM tableSelect WHERE colSel BETWEEN condition (AND condition)*
-       |INSERT INTO tableSelect VALUES '('values (',' values)* ')'
-       |DELETE FROM tableSelect
-       |DELETE FROM tableSelect WHERE condition (AND condition)*;
+query: selectQuery
+       |insertQuery
+       |deleteQuery;
+
+selectQuery:
+    SELECT colSel (',' colSel)* FROM tableSelect ? whereCond;
+    // we can add between later
+insertQuery:
+    INSERT INTO tableSelect VALUES '('values (',' values)* ')';
+
+deleteQuery:
+     DELETE FROM tableSelect ?whereCond;
 
 tableCommand: createTable
        | dropTable
@@ -27,6 +33,9 @@ createIndex:
         CREATE INDEX indexSel ON tableSelect '('colSel')';
 dropIndex:
         DROP INDEX indexSel ON tableSelect;
+
+whereCond:
+    WHERE condition (AND condition)*;
 
 indexSel: ID;  
 

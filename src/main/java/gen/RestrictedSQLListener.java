@@ -1,4 +1,4 @@
-// Generated from C:/Users/Andrew/DBMS/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
+// Generated from C:/Users/Andrew/DBMS/src/main/java/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
 package gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -27,6 +27,36 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitQuery(RestrictedSQLParser.QueryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#selectQuery}.
+	 * @param ctx the parse tree
+	 */
+	void enterSelectQuery(RestrictedSQLParser.SelectQueryContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#selectQuery}.
+	 * @param ctx the parse tree
+	 */
+	void exitSelectQuery(RestrictedSQLParser.SelectQueryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#insertQuery}.
+	 * @param ctx the parse tree
+	 */
+	void enterInsertQuery(RestrictedSQLParser.InsertQueryContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#insertQuery}.
+	 * @param ctx the parse tree
+	 */
+	void exitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#deleteQuery}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#deleteQuery}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
 	 * @param ctx the parse tree
@@ -78,6 +108,16 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitDropIndex(RestrictedSQLParser.DropIndexContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#whereCond}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhereCond(RestrictedSQLParser.WhereCondContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#whereCond}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhereCond(RestrictedSQLParser.WhereCondContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#indexSel}.
 	 * @param ctx the parse tree
 	 */
@@ -88,6 +128,16 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitIndexSel(RestrictedSQLParser.IndexSelContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#values}.
+	 * @param ctx the parse tree
+	 */
+	void enterValues(RestrictedSQLParser.ValuesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#values}.
+	 * @param ctx the parse tree
+	 */
+	void exitValues(RestrictedSQLParser.ValuesContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#colSel}.
 	 * @param ctx the parse tree
 	 */
@@ -97,16 +147,6 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitColSel(RestrictedSQLParser.ColSelContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link RestrictedSQLParser#colAtt}.
-	 * @param ctx the parse tree
-	 */
-	void enterValues(RestrictedSQLParser.valuesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link RestrictedSQLParser#colSel}.
-	 * @param ctx the parse tree
-	 */
-	void exitValues(RestrictedSQLParser.valuesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#colAtt}.
 	 * @param ctx the parse tree

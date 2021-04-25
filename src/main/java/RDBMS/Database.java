@@ -42,7 +42,7 @@ public class Database {
 
     }
 
-    void insert(String tableName, ArrayList<Comparable> data) {
+    void insert(String tableName, ArrayList<String> data) {
         int index = findTable(tableName);
         if (index == -1) {
             throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");

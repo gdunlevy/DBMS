@@ -1,5 +1,6 @@
-// Generated from C:/Users/Andrew/DBMS/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
+// Generated from C:/Users/Andrew/DBMS/src/main/java/RDBMS\RestrictedSQL.g4 by ANTLR 4.9.1
 package gen;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -34,6 +35,42 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitQuery(RestrictedSQLParser.QueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSelectQuery(RestrictedSQLParser.SelectQueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSelectQuery(RestrictedSQLParser.SelectQueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInsertQuery(RestrictedSQLParser.InsertQueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -99,6 +136,18 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWhereCond(RestrictedSQLParser.WhereCondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhereCond(RestrictedSQLParser.WhereCondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIndexSel(RestrictedSQLParser.IndexSelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -111,6 +160,18 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterValues(RestrictedSQLParser.ValuesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValues(RestrictedSQLParser.ValuesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterColSel(RestrictedSQLParser.ColSelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -118,18 +179,6 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitColSel(RestrictedSQLParser.ColSelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValues(RestrictedSQLParser.valuesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValues(RestrictedSQLParser.valuesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
