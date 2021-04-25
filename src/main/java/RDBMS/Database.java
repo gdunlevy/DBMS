@@ -67,6 +67,32 @@ public class Database {
         tablesList.get(index).delete(primaryKeys);
 
     }
+    
+    public void toExportString(String fileName){
+        String outputFilePath = " ";
+
+        File file = new File (fileName);
+
+        BufferedWriter bf = null; 
+
+        try{ 
+            bf = new BufferedWrited (new FilerWriter(file,new));
+            bf.write(Table.toString());
+            bf.newLine();
+            bf.write("Table end");
+            bf.newLine();
+            bf.flush();
+        }
+        catch(IOException e){
+                e.printStackTrace();
+            }finally{
+
+                try{
+                    //always close the writer
+                    bf.close();
+                }catch(Exception e){}
+            }
+    }
 
     /*
     public void createIndex(String idx){   
