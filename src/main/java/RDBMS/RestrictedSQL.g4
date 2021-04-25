@@ -6,7 +6,7 @@ statement : query
 query: SELECT colSel FROM tableSelect WHERE condition (AND condition)*
        |SELECT colSel (',' colSel)* FROM tableSelect
        | SELECT colSel FROM tableSelect WHERE colSel BETWEEN condition (AND condition)*
-       |INSERT INTO tableSelect VALUES '('ID (',' ID)* ')'
+       |INSERT INTO tableSelect VALUES '('values (',' values)* ')'
        |DELETE FROM tableSelect
        |DELETE FROM tableSelect WHERE condition (AND condition)*;
 
@@ -29,6 +29,8 @@ dropIndex:
         DROP INDEX indexSel ON tableSelect;
 
 indexSel: ID;  
+
+values: ID;
 
 colSel: '*'
     | ID;
