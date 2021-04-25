@@ -3,41 +3,50 @@ grammar RestrictedSQL;
 statement : query
     | tableCommand;
 
-query: 'SELECT' colSel 'FROM' tableSelect 'WHERE' condition ('AND' condition)*
-       |'SELECT' colSel (',' colSel)* 'FROM' tableSelect
-       |'SELECT' colSel 'FROM' tableSelect 'WHERE' colSel 'BETWEEN' condition ('AND' condition)*
-       |'INSERT' 'INTO' tableSelect 'VALUES' '('ID (',' ID)* ')'
-       |'DELETE' 'FROM' tableSelect
-       |'DELETE' 'FROM' tableSelect 'WHERE'condition ('AND' condition)*
-       |'CREATE' 'TABLE' tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* key')'';'
-       |'DROP' 'TABLE' tableSelect
-       |'CREATE' 'INDEX' indexSel 'ON' tableSelect '('colSel (',' colSel)* ')'
-       |'DROP' 'INDEX' indexSel 'ON' tableSelect;
-       
+query: SELECT colSel FROM tableSelect WHERE condition (AND condition)*
+       |SELECT colSel (',' colSel)* FROM tableSelect
+       |SELECT colSel FROM tableSelect WHERE colSel BETWEEN condition (AND condition)*
+       |INSERT INTO tableSelect VALUES '('ID (',' ID)* ')'
+       |DELETE FROM tableSelect
+       |DELETE FROM tableSelect WHERE condition (AND condition)*;
+
+tableCommand: createTable
+       | dropTable
+       | createIndex
+       | dropIndex;
+
+createTable:
+	CREATE TABLE tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* ',' key')'';';
+
+        
+dropTable:
+      DROP TABLE tableSelect;
+
+createIndex:
+        CREATE INDEX indexSel ON tableSelect '('colSel')';
+dropIndex:
+        DROP INDEX indexSel ON tableSelect;
+
 indexSel: ID;  
 
-colSel: colSel colSel
-    |'*'
+colSel: '*'
     | ID;
 
 colAtt:
-	|'VARCHAR' '('ID')'
-	|'INT'
-	|'FLOAT'
-	|'NULL'
-	|'NOT NULL';
+	|VARCHAR '('ID')'
+	|INT
+	|FLOAT
+	|NULL
+	|NOT_NULL;
 
 key:
-	| 'PRIMARY KEY' '(' colSel')';
+	| PRIMARY_KEY '(' colSel')';
 
-tableCommand: 'ADD' tableSelect
-            | 'DROP' tableCommand;
 
-tableSelect:
-	| ID;
 
-condition: condition condition
-    | colSel '=' ID
+tableSelect: ID;
+
+condition: colSel '=' ID
     | colSel '>' ID
     | colSel '>=' ID
     | colSel '<' ID
@@ -93,5 +102,4 @@ PRIMARY_KEY: 'PRIMARY KEY';
 FORGIEN_KEY: 'FORGIEN KEY';
 
 WS        : [ \t\n\r]+ -> skip;
-
 ID : [a-zA-Z0-9]+ ;

@@ -1,7 +1,10 @@
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
-import java.util.*;
 
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.util.ArrayList;
 
 public class Main {
 	public static void main(String[] args) throws Exception
@@ -30,25 +33,16 @@ public class Main {
 			 
 		 }
 		 RestrictedSQLParser parser = new RestrictedSQLParser(tokens);
-		 ParseTree queryTree = parser.query(); //or use parser.statment();
+		 ParseTree queryTree = parser.statement(); //or use parser.statment();
 		 
 		 String query = queryTree.toStringTree(parser);
 		 System.out.println(query);
 		 
-		 ParseTree tableTree = parser.tableSelect(); //or use parser.statment();
-		 String table = tableTree.toStringTree(parser);
-		 System.out.println(table);
 		 
-		 ParseTree colTree = parser.colSel(); //or use parser.statment();
-		 String column = colTree.toStringTree(parser);
-		 System.out.println(column);
+		 RestrictedSQLActiveVisitor visitor = new RestrictedSQLActiveVisitor(new Database());
+		 queryTree.accept(visitor);
 		 
-		 
-		 Database data = new Database();
-		 ArrayList<String> columnList = new ArrayList<String>();
-		 columnList.add(column);
-		 System.out.println("column List "+columnList);
-		 data.createTable(table, columnList);
+		 //visitor.visitCreateTable(null); // what do we need to put in here?
 		
 	
 	 }

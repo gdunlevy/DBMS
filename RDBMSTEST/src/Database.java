@@ -12,6 +12,7 @@ class Database {
      */
 
     private int findTable(String name) {
+    	System.out.println("IN find table");
         for (int i = 0; i < tablesList.size(); i++) {
             if (tablesList.get(i).getName().equals(name)) {
                 return i;
@@ -21,6 +22,7 @@ class Database {
     }
 
     public void createTable(String name, ArrayList<String> columnNames) {
+    	System.out.println("IN create table");
         int index = findTable(name);
         if (index != -1) {
             throw new IllegalArgumentException("ERROR: Table " + name + " already exists in the database.");
@@ -32,6 +34,7 @@ class Database {
 
 
     public void dropTable(String name) {
+    	System.out.println("IN drop table");
         int index = findTable(name);
         if (index == -1) {
             throw new IllegalArgumentException("ERROR: Table " + name + " does not exists in the database.");
