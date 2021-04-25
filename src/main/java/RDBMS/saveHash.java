@@ -10,11 +10,10 @@ public class WriteHashMapToTextFileExample {
     /*** Change the path ***/
     final static String outputFilePath = "datatbase-data.txt";
  
-    public static void mapFile(){
+    public void mapFile(TreeMap<String, Map<String,String>> databaseTree){
         //treemap from table class
-
+     
         File file = new File(outputFilePath);
-        
         BufferedWriter bf = null;;
         
         try{
@@ -22,7 +21,7 @@ public class WriteHashMapToTextFileExample {
             //create new BufferedWriter for the output file
             bf = new BufferedWriter( new FileWriter(file) );
             //iterate map entries
-            for(Map.Entry<String, Map<String,String>> entry : records.entrySet()){
+            for(Map.Entry<String, Map<String,String>> entry : databaseTree.entrySet()){
                 //put key and value separated by a colon
                 bf.write( entry.getKey() + ":" + entry.getValue() );
                 //new line
@@ -34,14 +33,23 @@ public class WriteHashMapToTextFileExample {
         }catch(IOException e){
             e.printStackTrace();
         }finally{
-            
             try{
                 //always close the writer
                 bf.close();
             }catch(Exception e){}
         }
-    }
+    }//end mapfile
+ 
+    public static void readMapFile(){
+      File file = new File(" "); //chose path
+      Scanner sc = new Scanner(file);
+  
+      while (sc.hasNextLine()){
+         System.out.println(sc.nextLine());
+      }//end while
+       
+   }//end read
     
-}  
+} //end class 
     
   
