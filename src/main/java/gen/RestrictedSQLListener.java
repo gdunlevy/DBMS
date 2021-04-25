@@ -101,6 +101,16 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#colAtt}.
 	 * @param ctx the parse tree
 	 */
+	void enterValues(RestrictedSQLParser.valuesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#colSel}.
+	 * @param ctx the parse tree
+	 */
+	void exitValues(RestrictedSQLParser.valuesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#colAtt}.
+	 * @param ctx the parse tree
+	 */
 	void enterColAtt(RestrictedSQLParser.ColAttContext ctx);
 	/**
 	 * Exit a parse tree produced by {@link RestrictedSQLParser#colAtt}.
