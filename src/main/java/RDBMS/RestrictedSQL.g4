@@ -22,7 +22,7 @@ tableCommand: createTable
        | dropIndex;
 
 createTable:
-	CREATE TABLE tableSelect '('(colSel ',')* colSel  key')'; //need to take into consideration the attributes and the NULL/NOT NULL
+	CREATE TABLE tableSelect '('(colSel ',')* colSel  ')'; //need to take into consideration the attributes and the NULL/NOT NULL
        //|'CREATE' 'TABLE' tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* ',' key')'';'
 
         
@@ -35,8 +35,17 @@ dropIndex:
         DROP INDEX indexSel ON tableSelect;
 
 whereCond:
-    WHERE condition (AND condition)*;
+    WHERE (condition | conditionList);
 
+conditionList:
+     orCond
+   | andCond;
+
+orCond:
+    condition 'OR' (condition | conditionList) ;
+
+andCond:
+    condition 'AND' (condition | conditionList);
 indexSel: ID;  
 
 values: ID;
@@ -59,12 +68,14 @@ key:
 tableSelect: ID;
 
 condition: equal
+           |  nteq
           | greater
           | less
           | lteq
           | gteg;
 
 equal: colSel '=' ID;
+nteq: colSel '!=' ID;
 greater: colSel '>' ID;
 less: colSel '>=' ID;
 lteq: colSel '<' ID;

@@ -2,11 +2,10 @@ package RDBMS;
 
 public class Condition {
     public enum Operation {
-        EQUAL, GREATER_THAN, LESS_THAN, EQ_GREATER_THAN, EQ_LESS_THAN
+        EQUAL, NOT_EQUAL,TRUE, GREATER_THAN, LESS_THAN, EQ_GREATER_THAN, EQ_LESS_THAN
     }
 
     private Operation op;
-
 
     private String columnName;
 
@@ -27,6 +26,10 @@ public class Condition {
         switch (op) {
             case EQUAL:
                 return comp == 0;
+            case NOT_EQUAL:
+                return comp != 0;
+            case TRUE:
+                return true;
             case LESS_THAN:
                 return comp < 0;
             case EQ_LESS_THAN:

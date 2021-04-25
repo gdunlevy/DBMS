@@ -1,6 +1,7 @@
 package RDBMS;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Database {
 
@@ -19,6 +20,14 @@ public class Database {
             }
         }
         return -1;
+    }
+
+    Table getTable(String tableName){
+        int i = findTable(tableName);
+        if (i == -1) {
+            throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
+        }
+        return tablesList.get(i);
     }
 
     void createTable(String name, ArrayList<String> columnNames) {
@@ -50,23 +59,13 @@ public class Database {
         tablesList.get(index).insert(data);
     }
 
-    void delete(String tableName, Condition cond) {
+    void delete(String tableName, Set<String> primaryKeys) {
         int index = findTable(tableName);
         if (index == -1) {
             throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
         }
-        tablesList.get(index).delete(cond);
+        tablesList.get(index).delete(primaryKeys);
 
-    }
-
-
-
-    public Table select(String tableName, Condition cond, ArrayList<String> colNames) {
-        int index = findTable(tableName);
-        if (index == -1) {
-            throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
-        }
-        return tablesList.get(index).select(cond,colNames);
     }
 
     /*

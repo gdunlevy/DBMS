@@ -118,6 +118,36 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitWhereCond(RestrictedSQLParser.WhereCondContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#conditionList}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionList(RestrictedSQLParser.ConditionListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#conditionList}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionList(RestrictedSQLParser.ConditionListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#orCond}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrCond(RestrictedSQLParser.OrCondContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#orCond}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrCond(RestrictedSQLParser.OrCondContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#andCond}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndCond(RestrictedSQLParser.AndCondContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#andCond}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndCond(RestrictedSQLParser.AndCondContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#indexSel}.
 	 * @param ctx the parse tree
 	 */
@@ -197,6 +227,16 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEqual(RestrictedSQLParser.EqualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#nteq}.
+	 * @param ctx the parse tree
+	 */
+	void enterNteq(RestrictedSQLParser.NteqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#nteq}.
+	 * @param ctx the parse tree
+	 */
+	void exitNteq(RestrictedSQLParser.NteqContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#greater}.
 	 * @param ctx the parse tree

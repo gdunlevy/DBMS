@@ -4,7 +4,6 @@ import gen.RestrictedSQLBaseVisitor;
 import gen.RestrictedSQLParser;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
 
@@ -60,53 +59,22 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
 
     @Override
     public Object visitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx) {
-        List<RestrictedSQLParser.ConditionContext> conditionContext = ctx.whereCond().condition();
-        List<Condition> conditions = new ArrayList<>();
-        for (RestrictedSQLParser.ConditionContext context : conditionContext) {
-            conditions.add((Condition) this.visitCondition(context));
-        }
-
-        database.delete(ctx.tableSelect().getText(), conditions.get(0));
+        ConditionVistor conditionVistor = new ConditionVistor(database,database.getTable(ctx.tableSelect().getText()));
+        Table result = conditionVistor.visitWhereCond(ctx.whereCond());
+        database.delete(ctx.tableSelect().getText(), result.primaryKeys());
         return visitChildren(ctx);
     }
 
     @Override
     public Object visitSelectQuery(RestrictedSQLParser.SelectQueryContext ctx) {
-        List<RestrictedSQLParser.ConditionContext> conditionContext = ctx.whereCond().condition();
-        List<Condition> conditions = new ArrayList<>();
-        for (RestrictedSQLParser.ConditionContext context : conditionContext) {
-            conditions.add((Condition) this.visitCondition(context));
-        }
+        ConditionVistor conditionVistor = new ConditionVistor(database,database.getTable(ctx.tableSelect().getText()));
+        Table result = conditionVistor.visitWhereCond(ctx.whereCond());
         ArrayList<String> colNames = new ArrayList<>();
         for (RestrictedSQLParser.ColSelContext col : ctx.colSel()) {
             colNames.add(col.getText());
         }
-        System.out.println(database.select(ctx.tableSelect().getText(), conditions.get(0), colNames));
+        System.out.println(result.select(colNames));
 
         return super.visitSelectQuery(ctx);
-    }
-
-    public Object visitEqual(RestrictedSQLParser.EqualContext ctx) {
-        return new Condition(Condition.Operation.EQUAL, ctx.colSel().getText(), ctx.ID().getText());
-    }
-
-    @Override
-    public Object visitGreater(RestrictedSQLParser.GreaterContext ctx) {
-        return new Condition(Condition.Operation.GREATER_THAN, ctx.colSel().getText(), ctx.ID().getText());
-    }
-
-    @Override
-    public Object visitGteg(RestrictedSQLParser.GtegContext ctx) {
-        return new Condition(Condition.Operation.EQ_GREATER_THAN, ctx.colSel().getText(), ctx.ID().getText());
-    }
-
-    @Override
-    public Object visitLess(RestrictedSQLParser.LessContext ctx) {
-        return new Condition(Condition.Operation.LESS_THAN, ctx.colSel().getText(), ctx.ID().getText());
-    }
-
-    @Override
-    public Object visitLteq(RestrictedSQLParser.LteqContext ctx) {
-        return new Condition(Condition.Operation.EQ_LESS_THAN, ctx.colSel().getText(), ctx.ID().getText());
     }
 }

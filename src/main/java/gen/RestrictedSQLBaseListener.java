@@ -148,6 +148,42 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterConditionList(RestrictedSQLParser.ConditionListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditionList(RestrictedSQLParser.ConditionListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrCond(RestrictedSQLParser.OrCondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrCond(RestrictedSQLParser.OrCondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAndCond(RestrictedSQLParser.AndCondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAndCond(RestrictedSQLParser.AndCondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIndexSel(RestrictedSQLParser.IndexSelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -239,6 +275,18 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitEqual(RestrictedSQLParser.EqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNteq(RestrictedSQLParser.NteqContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNteq(RestrictedSQLParser.NteqContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

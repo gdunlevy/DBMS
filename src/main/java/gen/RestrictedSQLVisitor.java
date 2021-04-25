@@ -77,6 +77,24 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWhereCond(RestrictedSQLParser.WhereCondContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#conditionList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConditionList(RestrictedSQLParser.ConditionListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#orCond}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrCond(RestrictedSQLParser.OrCondContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#andCond}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndCond(RestrictedSQLParser.AndCondContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#indexSel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -124,6 +142,12 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEqual(RestrictedSQLParser.EqualContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#nteq}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNteq(RestrictedSQLParser.NteqContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#greater}.
 	 * @param ctx the parse tree
