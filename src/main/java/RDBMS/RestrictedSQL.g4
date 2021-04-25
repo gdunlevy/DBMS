@@ -8,10 +8,10 @@ query: selectQuery
        |deleteQuery;
 
 selectQuery:
-    SELECT colSel (',' colSel)* FROM tableSelect ? whereCond;
+    SELECT (colSel ',')* colSel  FROM tableSelect ? whereCond;
     // we can add between later
 insertQuery:
-    INSERT INTO tableSelect VALUES '('values (',' values)* ')';
+    INSERT INTO tableSelect VALUES '('(values ',')* values ')';
 
 deleteQuery:
      DELETE FROM tableSelect ?whereCond;
@@ -22,7 +22,7 @@ tableCommand: createTable
        | dropIndex;
 
 createTable:
-	CREATE TABLE tableSelect '('colSel (',' colSel )* ',' key');'; //need to take into consideration the attributes and the NULL/NOT NULL
+	CREATE TABLE tableSelect '('(colSel ',')* colSel  key')'; //need to take into consideration the attributes and the NULL/NOT NULL
        //|'CREATE' 'TABLE' tableSelect '('colSel colAtt colAtt (',' colSel colAtt colAtt)* ',' key')'';'
 
         
@@ -52,7 +52,7 @@ colAtt:
 	|NOT_NULL;
 
 key:
-	| PRIMARY_KEY '(' colSel')';
+	| ',' PRIMARY_KEY '(' colSel')';
 
 
 

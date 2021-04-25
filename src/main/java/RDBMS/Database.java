@@ -50,7 +50,7 @@ public class Database {
         tablesList.get(index).insert(data);
     }
 
-    void delete(String tableName, Comparable primaryKey) {
+    void delete(String tableName, String primaryKey) {
         int index = findTable(tableName);
         if (index == -1) {
             throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");

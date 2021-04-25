@@ -9,7 +9,7 @@ class Table {
 
     private String tableName;
     private ArrayList<String> columnNames;
-    private TreeMap records;
+    private TreeMap<String, Map<String,String>> records;
 
     /**
      * hold data in btree
@@ -18,7 +18,7 @@ class Table {
     public Table(String name, ArrayList<String> columnNames) {
         this.tableName = name;
         this.columnNames = columnNames;
-        this.records = new TreeMap();
+        this.records = new TreeMap<>();
     }
 
     public String getName() {
@@ -26,9 +26,9 @@ class Table {
     }
 
 
-    public void insert(ArrayList<Comparable> data)
+    public void insert(ArrayList<String> data)
     {
-        Map<String, Object> record = new HashMap<>();
+        Map<String, String> record = new HashMap<>();
         // assume
         if (records.containsKey(data.get(0))){
             throw new IllegalArgumentException("Duplicate primary key");
@@ -43,7 +43,7 @@ class Table {
         System.out.println("Record entered");
     }
 
-    public void delete(Comparable primaryKey)
+    public void delete(String primaryKey)
     {
         if(!records.containsKey(primaryKey)){
             throw new IllegalArgumentException("Absent primary key");
