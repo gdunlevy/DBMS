@@ -42,10 +42,10 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
     }
     
     @Override
-    public Object visitInsertEntry(RestrictedSQLParser.InsertEntryContext ctx) {
+    public Object visitInsertEntry(RestrictedSQLParser.QueryContext ctx) {
         //INSERT INTO TABLE tableSelect VALUES VALUES '('ID (',' ID)* ')'
         ArrayList<Integer> InsertValues = new ArrayList<>();
-        for (RestrictedSQLParser.ValuesContext id : ctx.values()) {
+        for (RestrictedSQLParser.valuesContext id : ctx.values()) {
             InsertValues.add(id.getText());
 
         } try{
