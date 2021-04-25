@@ -30,11 +30,11 @@ public class RestrictedSQLParser extends Parser {
 		RULE_statement = 0, RULE_query = 1, RULE_tableCommand = 2, RULE_createTable = 3, 
 		RULE_dropTable = 4, RULE_createIndex = 5, RULE_dropIndex = 6, RULE_indexSel = 7, 
 		RULE_colSel = 8, RULE_colAtt = 9, RULE_key = 10, RULE_tableSelect = 11, 
-		RULE_condition = 12;
+		RULE_condition = 12, RULE_values = 13;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"statement", "query", "tableCommand", "createTable", "dropTable", "createIndex", 
-			"dropIndex", "indexSel", "colSel", "colAtt", "key", "tableSelect", "condition"
+			"dropIndex", "indexSel", "values", "colSel", "colAtt", "key", "tableSelect", "condition"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -818,6 +818,8 @@ public class RestrictedSQLParser extends Parser {
 		return _localctx;
 	}
 
+	
+	
 	public static class ColSelContext extends ParserRuleContext {
 		public TerminalNode ID() { return getToken(RestrictedSQLParser.ID, 0); }
 		public ColSelContext(ParserRuleContext parent, int invokingState) {
@@ -1172,6 +1174,49 @@ public class RestrictedSQLParser extends Parser {
 				}
 				break;
 			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+	
+	public static class valuesContext extends ParserRuleContext {
+		public TerminalNode ID() { return getToken(RestrictedSQLParser.ID, 0); }
+		public valuesContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_colSel; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof RestrictedSQLListener ) ((RestrictedSQLListener)listener).enterColSel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof RestrictedSQLListener ) ((RestrictedSQLListener)listener).exitColSel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof RestrictedSQLVisitor ) return ((RestrictedSQLVisitor<? extends T>)visitor).visitInsertEntry(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public final valuesContext values() throws RecognitionException {
+		valuesContext _localctx = new valuesContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_values);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(189);
+			match(ID);
+			}
+		
 		}
 		catch (RecognitionException re) {
 			_localctx.exception = re;
