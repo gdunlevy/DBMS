@@ -41,7 +41,8 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
         return visitChildren(ctx);
     }
 
-    @Override public Object visitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx) {
+    @Override
+    public Object visitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx) {
         //INSERT INTO TABLE tableSelect VALUES VALUES '('ID (',' ID)* ')'
         ArrayList<String> InsertValues = new ArrayList<>();
         for ( RestrictedSQLParser.ValuesContext val : ctx.values()) {
@@ -56,4 +57,9 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
         return visitChildren(ctx);
     }
 
+    @Override
+    public Object visitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx) {
+
+        return visitChildren(ctx);
+    }
 }

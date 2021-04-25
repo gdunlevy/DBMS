@@ -1,9 +1,6 @@
 package RDBMS;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 class Table {
 
@@ -21,10 +18,13 @@ class Table {
         this.records = new TreeMap<>();
     }
 
-    public String getName() {
+    String getName() {
         return tableName;
     }
 
+    Set<String> primaryKeys(){
+        return records.keySet();
+    }
 
     public void insert(ArrayList<String> data)
     {
@@ -43,15 +43,38 @@ class Table {
         System.out.println("Record entered");
     }
 
-    public void delete(String primaryKey)
+    void delete(Condition cond)
     {
-        if(!records.containsKey(primaryKey)){
-            throw new IllegalArgumentException("Absent primary key");
+        Table toDelete = select(cond);
+        for(String key : toDelete.primaryKeys()) {
+            records.remove(key);
+            System.out.println("Record " + key + " removed");
         }
-        records.remove(primaryKey);
-        System.out.println("Record removed");
     }
 
-    public void select() {
+    public Table select(Condition cond, ArrayList<String> colNames) {
+        for(String name : colNames){
+            if(!columnNames.contains(name)){
+                throw new IllegalArgumentException("Column name "+name+" not present in table "+ tableName);
+            }
+        }
+        Table result = new Table("result", colNames);
+        ArrayList<String> newRecord;
+        for(String key: records.keySet())
+        {
+            newRecord = new ArrayList<>();
+            if(cond.apply(records.get(key).get(cond.getColumnName())))
+            {
+                for( String col : colNames){
+                    newRecord.add(records.get(key).get(col));
+                }
+                result.insert(newRecord);
+            }
+        }
+        return result;
+    }
+
+    public Table select(Condition cond){
+        return select(cond,columnNames);
     }
 }

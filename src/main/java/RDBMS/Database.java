@@ -50,20 +50,23 @@ public class Database {
         tablesList.get(index).insert(data);
     }
 
-    void delete(String tableName, String primaryKey) {
+    void delete(String tableName, Condition cond) {
         int index = findTable(tableName);
         if (index == -1) {
             throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
         }
-        tablesList.get(index).delete(primaryKey);
+        tablesList.get(index).delete(cond);
 
     }
 
 
-    //TODO
-    public ArrayList<String> select(ArrayList<String> table) {
 
-        return table;
+    public Table select(String tableName, Condition cond, ArrayList<String> colNames) {
+        int index = findTable(tableName);
+        if (index == -1) {
+            throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
+        }
+        return tablesList.get(index).select(cond,colNames);
     }
 
     /*
