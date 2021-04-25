@@ -123,6 +123,18 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterValues(RestrictedSQLParser.valuesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValues(RestrictedSQLParser.valuesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterColAtt(RestrictedSQLParser.ColAttContext ctx) { }
 	/**
 	 * {@inheritDoc}
