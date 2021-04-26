@@ -19,9 +19,9 @@ deleteQuery:
      DELETE FROM tableSelect whereCond;
      
 loadFile: 
-	LOAD filename;
+	LOAD ID;
 saveFile: 
-	SAVE filename;
+	SAVE ID;
 
 tableCommand: createTable
        | dropTable
