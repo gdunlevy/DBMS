@@ -99,16 +99,33 @@ public class Database {
         }
     }
 
-    public void toLoadDatabase(String filename) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        String line = null;
+     public void toLoadDatabase(String filename){
+        Scanner s = new Scanner(new File(filename));;
+	    ArrayList<String> tables = new ArrayList<String>();
+        ArrayList<String> columns = new ArrayList<String>();
+        ArrayList<String> values = new ArrayList <String>();
+        try{
+            String message = s.nextLine();
+            tables.add(message);
+            String msg = s.nextLine();
+            columns.add(msg);
 
-        while ((line = br.readLine()) != null) {
-            String[] values = line.split(",");
+            while(s.hasNextLine()) {
+                String value = s.nextLine();
+                values.add(value);
+            }
 
         }
-        br.close();
+        catch(IOException e){
+                e.printStackTrace();
+            }finally{
+                try{
+                    //always close the writer
+                    s.close();
+                }catch(Exception e){}
+            }  
     }
+
 
     /*
     public void createIndex(String idx){   
