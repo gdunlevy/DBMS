@@ -90,14 +90,12 @@ public class Database {
     }
     
     public void toLoadDatabase(String filename){
-        BufferedReader br = new BufferedReader(new FileReader("thefile.csv"));
+        BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = null;
 
         while ((line = br.readLine()) != null) {
             String[] values = line.split(",");
-            for (String str : values) {
-                System.out.println(str);
-            }
+            
         }
         br.close();
     }
