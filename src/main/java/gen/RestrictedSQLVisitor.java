@@ -35,6 +35,12 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#record}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRecord(RestrictedSQLParser.RecordContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#deleteQuery}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

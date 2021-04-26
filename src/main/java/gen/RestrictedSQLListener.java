@@ -48,6 +48,16 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitInsertQuery(RestrictedSQLParser.InsertQueryContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#record}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecord(RestrictedSQLParser.RecordContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#record}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecord(RestrictedSQLParser.RecordContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#deleteQuery}.
 	 * @param ctx the parse tree
 	 */

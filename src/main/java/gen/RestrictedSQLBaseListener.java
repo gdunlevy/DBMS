@@ -64,6 +64,18 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRecord(RestrictedSQLParser.RecordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRecord(RestrictedSQLParser.RecordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx) { }
 	/**
 	 * {@inheritDoc}

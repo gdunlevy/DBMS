@@ -72,7 +72,8 @@ class Table {
         return result;
     }
 
-    Table select(ArrayList<String> colNames) {
+    Table select(ArrayList<String> colmNames) {
+        ArrayList<String> colNames = colmNames.get(0).equals("*") ? columnNames : colmNames;
         for (String name : colNames) {
             if (!columnNames.contains(name)) {
                 throw new IllegalArgumentException("Column name " + name + " not present in table " + tableName);

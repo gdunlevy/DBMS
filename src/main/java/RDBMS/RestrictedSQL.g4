@@ -10,10 +10,12 @@ query: selectQuery
        |deleteQuery;
 
 selectQuery:
-    SELECT (colSel ',')* colSel  FROM tableSelect ? whereCond;
+    SELECT (colSel ',')* colSel  FROM tableSelect  whereCond?;
     // we can add between later
 insertQuery:
-    INSERT INTO tableSelect VALUES '('(values ',')* values ')';
+    INSERT INTO tableSelect VALUES '{' record+ '}';
+
+record: '('(values ',')* values ')';
 
 deleteQuery:
      DELETE FROM tableSelect whereCond;
