@@ -1,7 +1,9 @@
 grammar RestrictedSQL;
 
 statement : query
-    | tableCommand;
+    | tableCommand
+    | loadFile
+    | saveFile;
 
 query: selectQuery
        |insertQuery
@@ -15,6 +17,11 @@ insertQuery:
 
 deleteQuery:
      DELETE FROM tableSelect whereCond;
+     
+loadFile: 
+	LOAD filename;
+saveFile: 
+	SAVE filename;
 
 tableCommand: createTable
        | dropTable
