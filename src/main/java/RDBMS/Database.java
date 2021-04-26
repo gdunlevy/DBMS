@@ -69,29 +69,37 @@ public class Database {
     }
     
     public void toExportString(String fileName){
-        String outputFilePath = " ";
-
         File file = new File (fileName);
-
         BufferedWriter bf = null; 
 
         try{ 
-            bf = new BufferedWrited (new FilerWriter(file,new));
+            bf = new BufferedWrited (new FilerWriter(file,true));
             bf.write(Table.toString());
-            bf.newLine();
-            bf.write("Table end");
+            bf.write(",");
             bf.newLine();
             bf.flush();
         }
         catch(IOException e){
                 e.printStackTrace();
             }finally{
-
                 try{
                     //always close the writer
                     bf.close();
                 }catch(Exception e){}
             }
+    }
+    
+    public void toLoadDatabase(String filename){
+        BufferedReader br = new BufferedReader(new FileReader("thefile.csv"));
+        String line = null;
+
+        while ((line = br.readLine()) != null) {
+            String[] values = line.split(",");
+            for (String str : values) {
+                System.out.println(str);
+            }
+        }
+        br.close();
     }
 
     /*
