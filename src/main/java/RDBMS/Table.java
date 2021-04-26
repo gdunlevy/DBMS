@@ -126,17 +126,38 @@ class Table {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder result = new StringBuilder(tableName + "\n");
         result.append(columnNames).append("\n");
-        for(String key : records.keySet()){
-            for (String columnName: columnNames){
+        for (String key : records.keySet()) {
+            for (String columnName : columnNames) {
                 result.append(records.get(key).get(columnName)).append(" ");
             }
             result.append("\n");
         }
         return result.toString();
+    }
+
+    Table innerJoin(Table other, JoinCondition condition) {
+        ArrayList<String> newColumn = new ArrayList<>();
+        columnNames.forEach((name) -> newColumn.add(getName() + "_" + name));
+        other.columnNames.forEach((name) -> newColumn.add(other.getName() + "_" + name));
+        Table join = new Table(this.tableName + " join " + other.getName(), newColumn);
+        ArrayList<String> newRecord;
+        for (Map<String, String> record : records.values()) {
+            for (Map<String, String> oRecord : other.records.values()) {
+                newRecord = new ArrayList<>();
+                if (condition.apply(record.get(condition.getLeftColumnName()), oRecord.get(condition.getRightColumnName()))) {
+                    newRecord.addAll(record.values());
+                    newRecord.addAll(oRecord.values());
+                    join.insert(newRecord);
+                }
+            }
+
+        }
+
+
+        return join;
     }
 
 }
