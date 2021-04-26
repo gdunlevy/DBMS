@@ -1,5 +1,6 @@
 package RDBMS;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Database {
         return -1;
     }
 
-    Table getTable(String tableName){
+    Table getTable(String tableName) {
         int i = findTable(tableName);
         if (i == -1) {
             throw new IllegalArgumentException("ERROR: Table " + tableName + " does not exists in the database.");
@@ -67,35 +68,44 @@ public class Database {
         tablesList.get(index).delete(primaryKeys);
 
     }
-    
-    public void toExportString(String fileName){
-        File file = new File (fileName);
-        BufferedWriter bf = null; 
 
-        try{ 
-            bf = new BufferedWrited (new FilerWriter(file,true));
-            bf.write(Table.toString());
-            bf.write(",");
-            bf.newLine();
-            bf.flush();
-        }
-        catch(IOException e){
-                e.printStackTrace();
-            }finally{
-                try{
-                    //always close the writer
-                    bf.close();
-                }catch(Exception e){}
+    public void export(String fileName) {
+        File file = new File(fileName);
+
+        BufferedWriter bf = null;
+
+        try {
+            bf = new BufferedWriter(new FileWriter(file, true));
+            for (Table table : tablesList) {
+                bf.write(table.toString());
+                bf.newLine();
+                bf.write("#");
+                bf.newLine();
             }
+            bf.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                //always close the writer
+                if (bf != null) {
+                    bf.close();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
     }
-    
-    public void toLoadDatabase(String filename){
+
+    public void toLoadDatabase(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = null;
 
         while ((line = br.readLine()) != null) {
             String[] values = line.split(",");
-            
+
         }
         br.close();
     }

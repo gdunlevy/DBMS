@@ -58,6 +58,26 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#loadFile}.
+	 * @param ctx the parse tree
+	 */
+	void enterLoadFile(RestrictedSQLParser.LoadFileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#loadFile}.
+	 * @param ctx the parse tree
+	 */
+	void exitLoadFile(RestrictedSQLParser.LoadFileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#saveFile}.
+	 * @param ctx the parse tree
+	 */
+	void enterSaveFile(RestrictedSQLParser.SaveFileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#saveFile}.
+	 * @param ctx the parse tree
+	 */
+	void exitSaveFile(RestrictedSQLParser.SaveFileContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
 	 * @param ctx the parse tree
 	 */

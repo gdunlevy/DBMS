@@ -41,6 +41,18 @@ public interface RestrictedSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeleteQuery(RestrictedSQLParser.DeleteQueryContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#loadFile}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLoadFile(RestrictedSQLParser.LoadFileContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RestrictedSQLParser#saveFile}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSaveFile(RestrictedSQLParser.SaveFileContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RestrictedSQLParser#tableCommand}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

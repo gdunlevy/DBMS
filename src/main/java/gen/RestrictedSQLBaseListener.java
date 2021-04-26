@@ -76,6 +76,30 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLoadFile(RestrictedSQLParser.LoadFileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLoadFile(RestrictedSQLParser.LoadFileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSaveFile(RestrictedSQLParser.SaveFileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSaveFile(RestrictedSQLParser.SaveFileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTableCommand(RestrictedSQLParser.TableCommandContext ctx) { }
 	/**
 	 * {@inheritDoc}

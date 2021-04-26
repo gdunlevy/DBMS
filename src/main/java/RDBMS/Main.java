@@ -21,7 +21,6 @@ public class Main {
         while (run) {
             System.out.print("Enter Query: ");
             input = CharStreams.fromString(inputStream.nextLine());
-            System.out.println();
 
             lexer = new RestrictedSQLLexer(input);
             tokenStream = new CommonTokenStream(lexer);
