@@ -77,4 +77,18 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
 
         return super.visitSelectQuery(ctx);
     }
+    
+    @Override
+    public Object visitSaveFile(RestrictedSQLParser.StatementContext ctx){
+        String filename = ctx.getText();  
+        toExportString(filname); 
+        return visitChildren(ctx);
+    }
+    @Override
+    public Object visitLoadFile(RestrictedSQLParser.StatementContext ctx){
+        String filename = ctx.getText();  
+        toExportString(filname); 
+        return visitChildren(ctx);
+    }
+    
 }
