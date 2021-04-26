@@ -6,12 +6,15 @@ statement : query
     | saveFile;
 
 query: selectQuery
+        |innerJoin
        |insertQuery
        |deleteQuery;
 
 selectQuery:
     SELECT (colSel ',')* colSel  FROM tableSelect  whereCond?;
-    // we can add between later
+
+innerJoin:
+     SELECT (colSel ',')* colSel  'INNERJOIN' tableSelect ','tableSelect  whereCond;
 insertQuery:
     INSERT INTO tableSelect VALUES '{' record+ '}';
 

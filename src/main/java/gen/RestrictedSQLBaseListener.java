@@ -52,6 +52,18 @@ public class RestrictedSQLBaseListener implements RestrictedSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterInnerJoin(RestrictedSQLParser.InnerJoinContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInnerJoin(RestrictedSQLParser.InnerJoinContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInsertQuery(RestrictedSQLParser.InsertQueryContext ctx) { }
 	/**
 	 * {@inheritDoc}

@@ -38,6 +38,16 @@ public interface RestrictedSQLListener extends ParseTreeListener {
 	 */
 	void exitSelectQuery(RestrictedSQLParser.SelectQueryContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RestrictedSQLParser#innerJoin}.
+	 * @param ctx the parse tree
+	 */
+	void enterInnerJoin(RestrictedSQLParser.InnerJoinContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RestrictedSQLParser#innerJoin}.
+	 * @param ctx the parse tree
+	 */
+	void exitInnerJoin(RestrictedSQLParser.InnerJoinContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RestrictedSQLParser#insertQuery}.
 	 * @param ctx the parse tree
 	 */

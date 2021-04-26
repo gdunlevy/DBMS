@@ -71,9 +71,9 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
     public Object visitSelectQuery(RestrictedSQLParser.SelectQueryContext ctx) {
         ConditionVistor conditionVistor = new ConditionVistor(database, database.getTable(ctx.tableSelect().getText()));
         Table result;
-        if(ctx.whereCond() != null) {
-             result = conditionVistor.visitWhereCond(ctx.whereCond());
-        }else{
+        if (ctx.whereCond() != null) {
+            result = conditionVistor.visitWhereCond(ctx.whereCond());
+        } else {
             result = database.getTable(ctx.tableSelect().getText());
         }
         ArrayList<String> colNames = new ArrayList<>();
@@ -83,6 +83,11 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
         System.out.println(result.select(colNames));
 
         return super.visitSelectQuery(ctx);
+    }
+
+    @Override
+    public Object visitInnerJoin(RestrictedSQLParser.InnerJoinContext ctx) {
+        return super.visitInnerJoin(ctx);
     }
 
     @Override
