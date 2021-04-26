@@ -87,8 +87,9 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
     @Override
     public Object visitLoadFile(RestrictedSQLParser.StatementContext ctx){
         String filename = ctx.getText();  
-        toExportString(filname); 
+        toLoadDatabase(filname); 
         return visitChildren(ctx);
     }
+   
     
 }
