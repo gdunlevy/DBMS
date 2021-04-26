@@ -138,6 +138,23 @@ class Table {
         return result.toString();
     }
 
+    public String toExportString() {
+        StringBuilder result = new StringBuilder(tableName + "\n");
+        for (String col: columnNames) {
+            result.append(col).append(',');
+        }
+        result.deleteCharAt(result.length()-1);
+        result.append("\n");
+        for (String key : records.keySet()) {
+            for (String columnName : columnNames) {
+                result.append(records.get(key).get(columnName)).append(",");
+            }
+            result.deleteCharAt(result.length()-1);
+            result.append("\n");
+        }
+        return result.toString();
+    }
+
     Table innerJoin(Table other, JoinCondition condition) {
         ArrayList<String> newColumn = new ArrayList<>();
         columnNames.forEach((name) -> newColumn.add(getName() + "_" + name));

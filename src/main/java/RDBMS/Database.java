@@ -1,8 +1,7 @@
 package RDBMS;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 
 public class Database {
 
@@ -70,15 +69,14 @@ public class Database {
     }
 
     public void export(String fileName) {
-        File file = new File(fileName);
+        File file = new File(fileName+".txt");
 
         BufferedWriter bf = null;
 
         try {
             bf = new BufferedWriter(new FileWriter(file, true));
             for (Table table : tablesList) {
-                bf.write(table.toString());
-                bf.newLine();
+                bf.write(table.toExportString());
                 bf.write("#");
                 bf.newLine();
             }
@@ -90,6 +88,7 @@ public class Database {
 
             try {
                 //always close the writer
+                System.out.println(" Database saved to " + file.getAbsolutePath());
                 if (bf != null) {
                     bf.close();
                 }
@@ -99,31 +98,29 @@ public class Database {
         }
     }
 
-     public void toLoadDatabase(String filename){
-        Scanner s = new Scanner(new File(filename));;
-	    ArrayList<String> tables = new ArrayList<String>();
-        ArrayList<String> columns = new ArrayList<String>();
-        ArrayList<String> values = new ArrayList <String>();
-        try{
-            String message = s.nextLine();
-            tables.add(message);
-            String msg = s.nextLine();
-            columns.add(msg);
-
-            while(s.hasNextLine()) {
-                String value = s.nextLine();
-                values.add(value);
+    public void load(String filename) {
+        try (Scanner s = new Scanner(new File(filename+".txt"))) {
+            while (s.hasNextLine()) {
+                loadTable(s);
             }
-
+            System.out.println(" Database Loaded");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(IOException e){
-                e.printStackTrace();
-            }finally{
-                try{
-                    //always close the writer
-                    s.close();
-                }catch(Exception e){}
-            }  
+        //always close the writer
+    }
+
+    private void loadTable(Scanner s) {
+        String title = s.nextLine();
+        ArrayList<String> colNames = new ArrayList<>(Arrays.asList(s.nextLine().split(",")));
+        Table table = new Table(title, colNames);
+        while (s.hasNextLine()) {
+            String line = s.nextLine();
+            if (line.equals("#"))
+                break;
+            table.insert(new ArrayList<>(Arrays.asList(line.split(","))));
+        }
+        tablesList.add(table);
     }
 
 

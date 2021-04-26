@@ -80,15 +80,15 @@ public class RestrictedSQLActiveVisitor extends RestrictedSQLBaseVisitor {
     
     @Override
     public Object visitSaveFile(RestrictedSQLParser.SaveFileContext ctx){
-        String filename = ctx.getText();  
+        String filename = ctx.ID().getText();
         database.export(filename);
         return visitChildren(ctx);
     }
     @Override
     public Object visitLoadFile(RestrictedSQLParser.LoadFileContext ctx){
-        String filename = ctx.getText();
+        String filename = ctx.ID().getText();
         try {
-            database.toLoadDatabase(filename);
+            database.load(filename);
         }catch (Exception e){
             System.out.println(e);
         }
